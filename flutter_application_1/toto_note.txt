@@ -1,0 +1,14 @@
+# First Stetp Test 
+1. Create Project On Local
+2. Create Repositories on Github
+3. Initial to Git bi .git URL 
+-------------------------------------
+1. Add package to dependencies
+2. Try to build APK 
+3. Add INTERNET to AndroidManifest
+-------------------------------------
+# Build to AKP Step 
+>cd .\flutter_application_1\
+>flutter build apk --release
+
+
