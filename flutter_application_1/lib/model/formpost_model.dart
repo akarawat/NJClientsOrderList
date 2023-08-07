@@ -1,4 +1,4 @@
-class FeedbackForm {
+class PostbackForm {
   String val1;
   String val2;
   String val3;
@@ -23,9 +23,10 @@ class FeedbackForm {
   String val22;
   String val23;
   String val24;
+  String val25Post;
 
   //min_humid, max_humid, min_temp, max_temp, min_ec, max_ec
-  FeedbackForm(
+  PostbackForm(
       this.val1,
       this.val2,
       this.val3,
@@ -49,10 +50,11 @@ class FeedbackForm {
       this.val21,
       this.val22,
       this.val23,
-      this.val24);
+      this.val24,
+      this.val25Post);
 
-  factory FeedbackForm.fromJson(dynamic json) {
-    return FeedbackForm(
+  factory PostbackForm.fromJson(dynamic json) {
+    return PostbackForm(
         "${json['val1']}",
         "${json['val2']}",
         "${json['val3']}",
@@ -76,7 +78,8 @@ class FeedbackForm {
         "${json['val21']}",
         "${json['val22']}",
         "${json['val23']}",
-        "${json['val24']}");
+        "${json['val24']}",
+        "${json['val25Post']}");
   }
 
   // Method to make GET parameters.
@@ -104,35 +107,7 @@ class FeedbackForm {
         'val21': val21,
         'val22': val22,
         'val23': val23,
-        'val24': val24
+        'val24': val24,
+        'val25Post': val25Post
       };
-}
-
-//model class for people information
-class ShopingModel {
-  int? id;
-  String? name, address;
-  ShopingModel({this.id, this.name, this.address});
-  //constructure for class
-
-  /* factory to convert json string to model data*/
-  factory ShopingModel.fromJSON(Map<String, dynamic> json) {
-    return ShopingModel(
-        id: json["id"], name: json["name"], address: json["address"]);
-  }
-}
-
-class User {
-  late int _idx;
-  late String _name;
-  late String _email;
-
-  String get name => _name;
-  set name(String value) => _name = value;
-
-  String get email => _email;
-  set email(String value) => _email = value;
-
-  int get idx => _idx;
-  set idx(int value) => _idx = value;
 }
