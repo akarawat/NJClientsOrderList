@@ -2,6 +2,7 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 import 'package:njoroder_application/model/formpost_model.dart';
 import '../model/form_model.dart';
+import 'package:intl/intl.dart';
 
 /// FormController is a class which does work of saving postPackForm in Google Sheets using
 /// HTTP GET request on Google App Script Web URL and parses response and sends result callback.
@@ -10,8 +11,9 @@ class FormPostController {
   //V100 Can add data: AKfycbwqbpHyvJZM63saBauYLlH_Zrh43I-aAtDAzh3ytUaVl6W2T9_CWtyMrnOsIcU97ASDZw
   //V101 Add Items insert: AKfycbysXkSj5PF_gSa_2_UR8EAxajHwZNJUVZgsytcOkRK7AeDDxJ7j002h1RFdf8tXPkgb6g
   //V102 V1007: AKfycbwQb8f44KKivwaVIedyqjfgjm8DdMNiobqCaeti5pb0MFOE6Ebj_QHJJY_ybrCkHBRM7w
+  //V200 : AKfycbz73qwueuzA6np4hKhWziCRW6CZf9CRn_Y79rZ7a2HmAUnfZjeojgIQjDCWMbFOtoffWw เพิ่มทีละหลายชุด
   static const String URLApiByOne =
-      "https://script.google.com/macros/s/AKfycbwQb8f44KKivwaVIedyqjfgjm8DdMNiobqCaeti5pb0MFOE6Ebj_QHJJY_ybrCkHBRM7w/exec"; // เปลี่ยนทุกครั้งที่มีการ Deploy
+      "https://script.google.com/macros/s/AKfycbz73qwueuzA6np4hKhWziCRW6CZf9CRn_Y79rZ7a2HmAUnfZjeojgIQjDCWMbFOtoffWw/exec"; // เปลี่ยนทุกครั้งที่มีการ Deploy
   // Success Status Message
   static const STATUS_SUCCESS = "SUCCESS";
 
@@ -22,85 +24,85 @@ class FormPostController {
   /// and sends HTTP GET request on [URL]. On successful response, [callback] is called.
   String strBack = "";
   void submitForm(
-      PostbackForm postPackForm, void Function(String) callback) async {
+      PostbackForm feedbackForm, void Function(String) callback) async {
     try {
       String txtParams = URLApiByOne +
           "?" +
           "val1=" +
-          postPackForm.val1 +
+          DateFormat('dd-MM-yyyy').format(DateTime.now()) +
           "&" +
           "val2=" +
-          postPackForm.val2 +
+          feedbackForm.val2 +
           "&" +
           "val3=" +
-          postPackForm.val3 +
+          feedbackForm.val3 +
           "&" +
           "val4=" +
-          postPackForm.val4 +
+          feedbackForm.val4 +
           "&" +
           "val5=" +
-          postPackForm.val5 +
+          feedbackForm.val5 +
           "&" +
           "val6=" +
-          postPackForm.val6 +
+          feedbackForm.val6 +
           "&" +
           "val7=" +
-          postPackForm.val7 +
+          feedbackForm.val7 +
           "&" +
           "val8=" +
-          postPackForm.val8 +
+          feedbackForm.val8 +
           "&" +
           "val9=" +
-          postPackForm.val9 +
+          feedbackForm.val9 +
           "&" +
           "val10=" +
-          postPackForm.val10 +
+          feedbackForm.val10 +
           "&" +
           "val11=" +
-          postPackForm.val11 +
+          feedbackForm.val11 +
           "&" +
           "val12=" +
-          postPackForm.val12 +
+          feedbackForm.val12 +
           "&" +
           "val13=" +
-          postPackForm.val13 +
+          feedbackForm.val13 +
           "&" +
           "val14=" +
-          postPackForm.val14 +
+          feedbackForm.val14 +
           "&" +
           "val15=" +
-          postPackForm.val15 +
+          feedbackForm.val15 +
           "&" +
           "val16=" +
-          postPackForm.val16 +
+          feedbackForm.val16 +
           "&" +
           "val17=" +
-          postPackForm.val17 +
+          feedbackForm.val17 +
           "&" +
           "val18=" +
-          postPackForm.val18 +
+          feedbackForm.val18 +
           "&" +
           "val19=" +
-          postPackForm.val19 +
+          feedbackForm.val19 +
           "&" +
           "val20=" +
-          postPackForm.val20 +
+          feedbackForm.val20 +
           "&" +
           "val21=" +
-          postPackForm.val21 +
+          feedbackForm.val21 +
           "&" +
           "val22=" +
-          postPackForm.val22 +
+          feedbackForm.val22 +
           "&" +
           "val23=" +
-          postPackForm.val23 +
+          feedbackForm.val23 +
           "&" +
           "val24=" +
-          postPackForm.val24 +
+          feedbackForm.val24 +
           "&" +
           "val25Post=" +
-          postPackForm.val25Post;
-      await http.post(Uri.parse(txtParams)).then((response) {
+          feedbackForm.val25Post;
+      await http.get(Uri.parse(txtParams)).then((response) {
         Map<String, dynamic> jdata =
             convert.jsonDecode(response.body)['status'];
         print('Howdy, ${jdata['status']}!');
