@@ -141,7 +141,7 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  Future<bool> _submitForm() async {
+  Future<void> _submitForm() async {
     bool flgUpdate = false;
     for (var name in arrModels) {
       if (name != "") {
@@ -186,9 +186,8 @@ class _MyAppState extends State<MyApp> {
           flgUpdate = false;
         }
       });
+      resetForm(true);
     }
-    resetForm(true);
-    return true;
   }
 
   // bool loadStock = false;
