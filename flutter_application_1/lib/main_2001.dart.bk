@@ -131,7 +131,7 @@ class _MyAppState extends State<MyApp> {
 
   void _launchURL() async {
     // Open Google Sheet in default browser
-    const url = FormPostController.URLGetStock;
+    const url = FormPostController.URLGoogle;
     // ignore: deprecated_member_use
     if (await canLaunch(url)) {
       // ignore: deprecated_member_use
@@ -142,7 +142,18 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<bool> _submitForm() async {
+    if (val3.text == "" || (arrModels.length <= 0)) {
+      showMsgDialog(context, "ระบุข้อมูลไม่ครบ");
+      return false;
+    }
     bool flgUpdate = false;
+    // Validate returns true if the form is valid, or false
+    // otherwise.
+    //if (minval3idController.text == "0" ||
+    //    maxval3idController.text == "0" ||
+    //    curval3Controller.text == "") {
+    //  return;
+    //}
     for (var name in arrModels) {
       if (name != "") {
         val25Post.text += name + ",";
@@ -187,20 +198,8 @@ class _MyAppState extends State<MyApp> {
         }
       });
     }
-    resetForm(true);
     return true;
   }
-
-  // bool loadStock = false;
-  // Future<bool> _getStock() async {
-  //   if (_formKey.currentState!.validate()) {
-  //     FormPostController formController = FormPostController();
-  //     formController.getStock((String response) {
-  //       print("Response: $response");
-  //     });
-  //   }
-  //   return true;
-  // }
 
   List<String> arrModels = [];
   List<String> listitems = [
@@ -245,7 +244,7 @@ class _MyAppState extends State<MyApp> {
           "#ยอดโอน =  0 \n" +
           "#ปลายทาง =  0 \n" +
           "#คอจีนกระดุมหน้า = 48 x 1 , กางเกง = M x 1";
-      val1.text = DateFormat('dd-MM-yyyy').format(DateTime.now()).toString();
+      val1.text = DateFormat('dd-MM-yyyy').format(DateTime.now());
       val3.text = "";
       val4.text = "";
       val5.text = "";
@@ -271,8 +270,6 @@ class _MyAppState extends State<MyApp> {
       val25Post.text = "";
       arrModels.clear();
       valTotal.text = "1";
-      selectvalSize = "";
-      selectval = "";
     });
   }
 
@@ -285,19 +282,10 @@ class _MyAppState extends State<MyApp> {
         "#ยอดโอน =  0 \n" +
         "#ปลายทาง =  0 \n" +
         "#คอจีนกระดุมหน้า = 48 x 1 , กางเกง = M x 1";
-    //loadStock
-    Future _getStock() async {
-      if (_formKey.currentState!.validate()) {
-        FormPostController formController = FormPostController();
-        formController.getStock((String response) {
-          print("Response: $response");
-        });
-      }
-    }
 
     return Scaffold(
         appBar: AppBar(
-            title: Text("NJ Orders Application"),
+            title: Text("Dropdown Button in Flutter"),
             backgroundColor: Colors.deepPurpleAccent),
         body: SingleChildScrollView(
             child: Column(
@@ -411,12 +399,11 @@ class _MyAppState extends State<MyApp> {
                                 child: TextFormField(
                                   controller: val3,
                                   decoration:
-                                      InputDecoration(labelText: 'ที่อยู่ *'),
-                                  keyboardType: TextInputType.text,
+                                      InputDecoration(labelText: 'ที่อยู่'),
+                                  keyboardType: TextInputType.number,
                                   style: TextStyle(
                                       fontStyle: FontStyle.normal,
-                                      color: Color.fromARGB(255, 144, 0, 0)
-                                          .withOpacity(0.6)),
+                                      color: Colors.black.withOpacity(0.6)),
                                 ),
                               ),
                             ],
@@ -428,12 +415,10 @@ class _MyAppState extends State<MyApp> {
                                 child: TextFormField(
                                   controller: val4,
                                   keyboardType: TextInputType.phone,
-                                  decoration:
-                                      InputDecoration(labelText: 'โทร *'),
+                                  decoration: InputDecoration(labelText: 'โทร'),
                                   style: TextStyle(
                                       fontStyle: FontStyle.normal,
-                                      color: Color.fromARGB(255, 144, 0, 0)
-                                          .withOpacity(0.6)),
+                                      color: Colors.black.withOpacity(0.6)),
                                 ),
                               ),
                               Expanded(
@@ -499,44 +484,6 @@ class _MyAppState extends State<MyApp> {
                                       color: Theme.of(context).iconTheme.color,
                                       iconSize: 30,
                                       onPressed: () {
-                                        bool flag = false;
-                                        if (selectval == "กางเกง" &&
-                                            (selectvalSize == "M" ||
-                                                selectvalSize == "L" ||
-                                                selectvalSize == "XL")) {
-                                          flag = true;
-                                          // showMsgDialog(context,
-                                          //     "เลิกไซส์ กางเกงไม่ถูกต้อง");
-                                          // return;
-                                        }
-                                        if (selectval != "กางเกง" &&
-                                            (selectvalSize == "36" ||
-                                                selectvalSize == "40" ||
-                                                selectvalSize == "42" ||
-                                                selectvalSize == "44" ||
-                                                selectvalSize == "48" ||
-                                                selectvalSize == "52" ||
-                                                selectvalSize == "56")) {
-                                          flag = true;
-                                        }
-                                        if ((selectval == "" ||
-                                                selectvalSize == "") ||
-                                            (valTotal.text == "0" ||
-                                                valTotal.text == "")) {
-                                          flag = false;
-                                        }
-                                        print(flag);
-                                        if (!flag) {
-                                          showMsgDialog(context,
-                                              "เลือกข้อมูลแบบ-ไซส์-จำนวน \nให้ถูกต้อง");
-                                          return;
-                                        } else {
-                                          setState(() {
-                                            arrModels.add(
-                                                "$selectval|$selectvalSize|${valTotal.text}");
-                                          });
-                                        }
-                                        /*
                                         if ((selectval == "" ||
                                                 selectvalSize == "") ||
                                             (valTotal.text == "0" ||
@@ -553,7 +500,6 @@ class _MyAppState extends State<MyApp> {
                                                 valTotal.text);
                                           });
                                         }
-                                        */
                                       },
                                     )
                                   ],
@@ -564,37 +510,48 @@ class _MyAppState extends State<MyApp> {
                           SizedBox(
                             height: 50,
                           ),
-                          Column(
-                            children: arrModels.map((_txtLine) {
-                              final _arr = _txtLine.split('|');
-                              return Container(
-                                // ignore: sort_child_properties_last
-                                child: ListTile(
-                                  title: Text(_arr[0] +
-                                      "     Size: " +
-                                      _arr[1] +
-                                      "     จำนวน: " +
-                                      _arr[2]),
-                                  //subtitle: Text(_arr[1] + ":" + _arr[2]),
-                                  trailing: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        primary: Colors.redAccent),
-                                    child: Icon(Icons.delete),
-                                    onPressed: () {
-                                      setState(() {
-                                        arrModels.removeWhere(
-                                            (item) => item == _txtLine);
-                                      });
-                                    },
-                                  ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: ListView(
+                                  shrinkWrap: true,
+                                  children: arrModels.map((_txtLine) {
+                                    final _arr = _txtLine.split('|');
+
+                                    //user peoplelist.map to loop over the list
+                                    return Expanded(
+                                        child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(_arr[0]),
+                                        ),
+                                        Container(
+                                            width: 50, child: Text(_arr[1])),
+                                        Container(
+                                            width: 30, child: Text(_arr[2])),
+                                        Container(
+                                            child: IconButton(
+                                          icon:
+                                              Icon(Icons.delete_forever_sharp),
+                                          color:
+                                              Theme.of(context).iconTheme.color,
+                                          iconSize: 30,
+                                          onPressed: () {
+                                            setState(() {
+                                              arrModels.removeWhere(
+                                                  (item) => item == _txtLine);
+                                            });
+                                          },
+                                        )),
+                                      ],
+                                    ));
+                                  }).toList(),
                                 ),
-                                margin: EdgeInsets.all(5),
-                                padding: EdgeInsets.all(5),
-                                color: Colors.green[100],
-                              );
-                            }).toList(),
+                              ),
+                            ],
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 50,
                           ),
                           Row(
@@ -758,16 +715,17 @@ class _MyAppState extends State<MyApp> {
                                   children: <Widget>[
                                     ElevatedButton(
                                       onPressed: () async {
-                                        if (val3.text == "" ||
-                                            (arrModels.isEmpty) ||
-                                            val4.text.isEmpty) {
-                                          showMsgDialog(
-                                              context, "ระบุข้อมูลไม่ครบ");
-                                        } else {
-                                          showAlertDialog(context);
-                                          // if (_flagConfirm) {
-                                          //   await _submitForm();
+                                        // if (await _submitForm()) {
+                                        //   resetForm(true);
+                                        // }
+                                        showAlertDialog(context);
+                                        if (_flagConfirm) {
+                                          // for (var name in arrModels) {
+                                          //   print(name);
                                           // }
+                                          if (await _submitForm()) {
+                                            resetForm(true);
+                                          }
                                         }
                                       },
                                       style: ButtonStyle(
