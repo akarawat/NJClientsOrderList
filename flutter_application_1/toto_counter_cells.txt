@@ -14,6 +14,8 @@
 =if(ISBLANK(C2), "", (MAX(B3:B2)+1))
 =if(ISBLANK(C3), "", (MAX(B3:B3)+1))
 =if(ISBLANK(C4), "", (MAX(B3:B4)+1))
+
+=orders_dev!B4
 =if(ISBLANK(C5), "", (MAX(B3:B4)+1))
 =if(ISBLANK(C6), "", (MAX(B3:B5)+1))
 =if(ISBLANK(C7), "", (MAX(B3:B6)+1))
@@ -120,8 +122,6 @@
 =if(ISBLANK(C108), "", (MAX(B3:B107)+1))
 =if(ISBLANK(C109), "", (MAX(B3:B108)+1))
 =if(ISBLANK(C110), "", (MAX(B3:B109)+1))
-
-------------
 =if(ISBLANK(C111), "", (MAX(B3:B110)+1))
 =if(ISBLANK(C112), "", (MAX(B3:B111)+1))
 =if(ISBLANK(C113), "", (MAX(B3:B112)+1))
@@ -212,7 +212,6 @@
 =if(ISBLANK(C198), "", (MAX(B3:B197)+1))
 =if(ISBLANK(C199), "", (MAX(B3:B198)+1))
 =if(ISBLANK(C200), "", (MAX(B3:B199)+1))
---------------------------------------------
 =if(ISBLANK(C201), "", (MAX(B3:B200)+1))
 =if(ISBLANK(C202), "", (MAX(B3:B201)+1))
 =if(ISBLANK(C203), "", (MAX(B3:B202)+1))
@@ -313,7 +312,6 @@
 =if(ISBLANK(C298), "", (MAX(B3:B297)+1))
 =if(ISBLANK(C299), "", (MAX(B3:B298)+1))
 =if(ISBLANK(C300), "", (MAX(B3:B299)+1))
------------------------------
 =if(ISBLANK(C301), "", (MAX(B3:B300)+1))
 =if(ISBLANK(C302), "", (MAX(B3:B301)+1))
 =if(ISBLANK(C303), "", (MAX(B3:B302)+1))
@@ -414,7 +412,6 @@
 =if(ISBLANK(C398), "", (MAX(B3:B397)+1))
 =if(ISBLANK(C399), "", (MAX(B3:B398)+1))
 =if(ISBLANK(C400), "", (MAX(B3:B399)+1))
------------------------------------------
 =if(ISBLANK(C401), "", (MAX(B3:B400)+1))
 =if(ISBLANK(C402), "", (MAX(B3:B401)+1))
 =if(ISBLANK(C403), "", (MAX(B3:B402)+1))
@@ -515,7 +512,6 @@
 =if(ISBLANK(C498), "", (MAX(B3:B497)+1))
 =if(ISBLANK(C499), "", (MAX(B3:B498)+1))
 =if(ISBLANK(C500), "", (MAX(B3:B499)+1))
----------------
 =if(ISBLANK(C501), "", (MAX(B3:B500)+1))
 =if(ISBLANK(C502), "", (MAX(B3:B501)+1))
 =if(ISBLANK(C503), "", (MAX(B3:B502)+1))
@@ -616,7 +612,6 @@
 =if(ISBLANK(C598), "", (MAX(B3:B597)+1))
 =if(ISBLANK(C599), "", (MAX(B3:B598)+1))
 =if(ISBLANK(C600), "", (MAX(B3:B599)+1))
------------------------------------------
 =if(ISBLANK(C601), "", (MAX(B3:B600)+1))
 =if(ISBLANK(C602), "", (MAX(B3:B601)+1))
 =if(ISBLANK(C603), "", (MAX(B3:B602)+1))
@@ -717,7 +712,6 @@
 =if(ISBLANK(C698), "", (MAX(B3:B697)+1))
 =if(ISBLANK(C699), "", (MAX(B3:B698)+1))
 =if(ISBLANK(C700), "", (MAX(B3:B699)+1))
-------------------------------------------
 =if(ISBLANK(C701), "", (MAX(B3:B700)+1))
 =if(ISBLANK(C702), "", (MAX(B3:B701)+1))
 =if(ISBLANK(C703), "", (MAX(B3:B702)+1))
@@ -818,7 +812,6 @@
 =if(ISBLANK(C798), "", (MAX(B3:B797)+1))
 =if(ISBLANK(C799), "", (MAX(B3:B798)+1))
 =if(ISBLANK(C800), "", (MAX(B3:B799)+1))
----------------
 =if(ISBLANK(C801), "", (MAX(B3:B800)+1))
 =if(ISBLANK(C802), "", (MAX(B3:B801)+1))
 =if(ISBLANK(C803), "", (MAX(B3:B802)+1))
@@ -919,7 +912,6 @@
 =if(ISBLANK(C898), "", (MAX(B3:B897)+1))
 =if(ISBLANK(C899), "", (MAX(B3:B898)+1))
 =if(ISBLANK(C900), "", (MAX(B3:B899)+1))
--------------------
 =if(ISBLANK(C901), "", (MAX(B3:B900)+1))
 =if(ISBLANK(C902), "", (MAX(B3:B901)+1))
 =if(ISBLANK(C903), "", (MAX(B3:B902)+1))
