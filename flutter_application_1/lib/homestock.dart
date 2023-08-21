@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:njoroder_application/main.dart';
@@ -54,17 +53,17 @@ class _HomeStockState extends State<HomeStock> {
 
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0; //New
+    int selectedIndex = 0; //New
     void _onItemTapped(int index) {
       setState(() {
-        _selectedIndex = index;
-        if (_selectedIndex == 0) {
+        selectedIndex = index;
+        if (selectedIndex == 0) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => HomeStock()));
-        } else if (_selectedIndex == 1) {
+        } else if (selectedIndex == 1) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => MyApp()));
-        } else if (_selectedIndex == 2) {
+        } else if (selectedIndex == 2) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => RowSetting()));
         }
@@ -73,15 +72,28 @@ class _HomeStockState extends State<HomeStock> {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("NJ Orders Application"),
-          backgroundColor: Colors.deepPurpleAccent),
+        title: const Text("NJ Orders Application"),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  Color.fromRGBO(2, 93, 221, 1),
+                  Color.fromARGB(224, 250, 228, 56),
+                ],
+                begin: FractionalOffset(0.0, 0.0),
+                end: FractionalOffset(1.0, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
             Form(
               key: _formKey,
-              child: Padding(
+              child: const Padding(
                   padding: EdgeInsets.all(16),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,23 +120,53 @@ class _HomeStockState extends State<HomeStock> {
                       ])),
             ),
           ])),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Add',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.delete),
-            label: 'Delete',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.add),
+      //       label: 'Add',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.delete),
+      //       label: 'Delete',
+      //     ),
+      //   ],
+      //   currentIndex: _selectedIndex,
+      //   onTap: _onItemTapped,
+      // ),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+            // sets the background color of the `BottomNavigationBar`
+            canvasColor: const Color.fromRGBO(2, 93, 221, 1),
+            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+            primaryColor: Colors.red,
+            textTheme: Theme.of(context).textTheme.copyWith(
+                bodySmall: const TextStyle(
+                    color: Color.fromARGB(255, 2, 161,
+                        57)))), // sets the inactive color of the `BottomNavigationBar`
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: selectedIndex,
+          onTap: _onItemTapped,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add),
+              label: 'Add',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.delete),
+              label: 'Delete',
+            ),
+          ],
+        ),
       ),
     );
   }

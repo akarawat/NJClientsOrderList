@@ -25,6 +25,11 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 
 void main() {
   runApp(MaterialApp(
+    theme: ThemeData(
+      brightness: Brightness.light,
+      primaryColor: Colors.blue,
+    ),
+    darkTheme: ThemeData(brightness: Brightness.dark),
     home: MyApp(),
   ));
 }
@@ -149,46 +154,46 @@ class _MyAppState extends State<MyApp> {
         val25Post.text += name + ",";
       }
     }
-    if (_formKey.currentState!.validate()) {
-      // If the form is valid, proceed.
-      PostbackForm feedbackForm = PostbackForm(
-          val1.text.trim(),
-          "-",
-          val3.text.trimLeft().trimRight(),
-          val4.text.trimLeft().trimRight(),
-          val5.text.trimLeft().trimRight(),
-          val6.text.trimLeft().trimRight(),
-          val7.text.trimLeft().trimRight(),
-          val8.text.trimLeft().trimRight(),
-          val9.text.trimLeft().trimRight(),
-          val10.text.trimLeft().trimRight(),
-          val11.text.trimLeft().trimRight(),
-          val12.text.trimLeft().trimRight(),
-          val13.text.trimLeft().trimRight(),
-          val14.text.trimLeft().trimRight(),
-          val15.text.trimLeft().trimRight(),
-          val16.text.trimLeft().trimRight(),
-          val17.text.trimLeft().trimRight(),
-          val18.text.trimLeft().trimRight(),
-          val19.text.trimLeft().trimRight(),
-          val20.text.trimLeft().trimRight(),
-          val21.text.trimLeft().trimRight(),
-          val22.text.trimLeft().trimRight(),
-          val23.text.trimLeft().trimRight(),
-          val24.text.trimLeft().trimRight(),
-          val25Post.text.trimLeft().trimRight());
+    //if (_formKey.currentState!.validate()) {
+    // If the form is valid, proceed.
+    PostbackForm feedbackForm = PostbackForm(
+        val1.text.trim(),
+        "-",
+        val3.text.trimLeft().trimRight(),
+        val4.text.trimLeft().trimRight(),
+        val5.text.trimLeft().trimRight(),
+        val6.text.trimLeft().trimRight(),
+        val7.text.trimLeft().trimRight(),
+        val8.text.trimLeft().trimRight(),
+        val9.text.trimLeft().trimRight(),
+        val10.text.trimLeft().trimRight(),
+        val11.text.trimLeft().trimRight(),
+        val12.text.trimLeft().trimRight(),
+        val13.text.trimLeft().trimRight(),
+        val14.text.trimLeft().trimRight(),
+        val15.text.trimLeft().trimRight(),
+        val16.text.trimLeft().trimRight(),
+        val17.text.trimLeft().trimRight(),
+        val18.text.trimLeft().trimRight(),
+        val19.text.trimLeft().trimRight(),
+        val20.text.trimLeft().trimRight(),
+        val21.text.trimLeft().trimRight(),
+        val22.text.trimLeft().trimRight(),
+        val23.text.trimLeft().trimRight(),
+        val24.text.trimLeft().trimRight(),
+        val25Post.text.trimLeft().trimRight());
 
-      FormPostController formController = FormPostController();
-      formController.submitForm(feedbackForm, (String response) {
-        print("Response: $response");
-        if (response == FormPostController.STATUS_SUCCESS) {
-          flgUpdate = true;
-        } else {
-          flgUpdate = false;
-        }
-      });
-      resetForm(true);
-    }
+    FormPostController formController = FormPostController();
+    formController.submitForm(feedbackForm, (String response) {
+      print("Response: $response");
+      if (response == FormPostController.STATUS_SUCCESS) {
+        flgUpdate = true;
+      } else {
+        flgUpdate = false;
+      }
+    });
+    resetForm(true);
+    //}
   }
 
   // bool loadStock = false;
@@ -238,13 +243,13 @@ class _MyAppState extends State<MyApp> {
       if (resetFill) {
         txtFill.text = "";
       }
-      txtFillTmp.text = "#สายบุญ ชุดขาว 999 ซอยหลังวัดดอน  ถนนเจริญกรุง63 \n" +
-          "แขวงยานนาวา เขตสาทร กทม. 10120  \n" +
-          "#081999999 \n" +
-          "#FB :  Narma \n" +
-          "#ยอดโอน =  0 \n" +
-          "#ปลายทาง =  0 \n" +
-          "#คอจีนกระดุมหน้า = 48 x 1 , กางเกง = M x 1";
+      txtFillTmp.text = "#ที่อยู่ 1 \n"
+          "ที่อยู่ 2  \n"
+          "#เบอร์โทร \n"
+          "#FB \n"
+          "#ยอดโอน =  0 \n"
+          "#ปลายทาง =  0 \n"
+          "#แบบ";
       val1.text = DateFormat('dd-MM-yyyy').format(DateTime.now()).toString();
       val3.text = "";
       val4.text = "";
@@ -278,14 +283,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    txtFillTmp.text = "#สายบุญ ชุดขาว 999 ซอยหลังวัดดอน  ถนนเจริญกรุง63 \n" +
-        "แขวงยานนาวา เขตสาทร กทม. 10120  \n" +
-        "#081999999 \n" +
-        "#FB :  Narma \n" +
-        "#ยอดโอน =  0 \n" +
-        "#ปลายทาง =  0 \n" +
-        "#คอจีนกระดุมหน้า = 48 x 1 , กางเกง = M x 1";
-    //val1.text = DateFormat('dd-MM-yyyy').format(DateTime.now()).toString();
+    txtFillTmp.text = "#ที่อยู่ 1 \n"
+        "ที่อยู่ 2  \n"
+        "#เบอร์โทร \n"
+        "#FB \n"
+        "#ยอดโอน =  0 \n"
+        "#ปลายทาง =  0 \n"
+        "#แบบ";
+    if (val1.text == "")
+      val1.text = DateFormat('dd-MM-yyyy').format(DateTime.now()).toString();
+    if (val5.text == "")
+      val5.text = DateFormat('dd-MM-yyyy')
+          .format(DateTime.now().add(const Duration(days: 1)))
+          .toString();
     //loadStock
     Future _getStock() async {
       if (_formKey.currentState!.validate()) {
@@ -315,427 +325,459 @@ class _MyAppState extends State<MyApp> {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("NJ Orders Application"),
-          backgroundColor: Colors.deepPurpleAccent),
-      body: SingleChildScrollView(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-            Form(
-              key: _formKey,
-              child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Row(
+        title: Text("NJ Orders Application"),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  Color.fromRGBO(2, 93, 221, 1),
+                  Color.fromARGB(224, 250, 228, 56),
+                ],
+                begin: FractionalOffset(0.0, 0.0),
+                end: FractionalOffset(1.0, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp),
+          ),
+        ),
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromRGBO(255, 255, 255, 0.008),
+            Color.fromARGB(0, 0, 0, 1),
+          ],
+        )),
+        child: Align(
+          alignment: Alignment.center,
+          child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                Form(
+                  key: _formKey,
+                  child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                minLines: 3,
-                                maxLines: null,
-                                controller: txtFill,
-                                keyboardType: TextInputType.multiline,
-                                decoration:
-                                    InputDecoration(labelText: 'ข้อความ'),
-                                style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    color: Colors.black),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: <Widget>[
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      //resetForm(false);
-                                      if (txtFill.text == "") return;
-                                      var multiline = txtFill.text
-                                          .trim()
-                                          .replaceAll(
-                                              RegExp(r'(\n){3,}'), "\n\n");
-                                      multiline = multiline.replaceAll(
-                                          RegExp(r'(\n)'), "");
-                                      //var singleline = multiline.replaceAll(' ','');
-                                      final tagName = multiline;
-
-                                      final split = tagName.split('#');
-                                      final Map<int, String> values = {
-                                        for (int i = 0; i < split.length; i++)
-                                          i: split[i]
-                                      };
-                                      //print(values);  // {0: grubs, 1:  sheep}
-
-                                      final value1 = values[1]; //ที่อยู่
-                                      final value2 = values[2]; //เบอร์
-                                      final value7 = values[3]; //FB
-                                      final value20 = values[4]; //ยอดโอน
-                                      final value21 = values[5]; //ปลายทาง
-
-                                      val3.text = value1.toString();
-                                      val4.text = value2.toString();
-                                      val7.text = value7.toString();
-
-                                      List<String> arrTrans =
-                                          value20.toString().split('=');
-                                      val20.text = arrTrans[1];
-
-                                      List<String> arrCash =
-                                          value21.toString().split('=');
-                                      val21.text = arrCash[1];
-                                    },
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color.fromRGBO(100, 34, 29, 1)),
-                                    ),
-                                    child: Text('ตรวจสอบ'),
+                          children: <Widget>[
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    minLines: 3,
+                                    maxLines: null,
+                                    controller: txtFill,
+                                    keyboardType: TextInputType.multiline,
+                                    decoration: const InputDecoration(
+                                        labelText: 'ข้อความ'),
+                                    style: const TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color: Colors.black),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            Expanded(
-                              child: Column(
-                                children: <Widget>[
-                                  ElevatedButton(
-                                    onPressed: () {
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          //resetForm(false);
+                                          if (txtFill.text == "") return;
+                                          var multiline = txtFill.text
+                                              .trim()
+                                              .replaceAll(
+                                                  RegExp(r'(\n){3,}'), "\n\n");
+                                          multiline = multiline.replaceAll(
+                                              RegExp(r'(\n)'), "");
+                                          //var singleline = multiline.replaceAll(' ','');
+                                          final tagName = multiline;
+
+                                          final split = tagName.split('#');
+                                          final Map<int, String> values = {
+                                            for (int i = 0;
+                                                i < split.length;
+                                                i++)
+                                              i: split[i]
+                                          };
+                                          //print(values);  // {0: grubs, 1:  sheep}
+
+                                          final value1 = values[1]; //ที่อยู่
+                                          final value2 = values[2]; //เบอร์
+                                          final value7 = values[3]; //FB
+                                          final value19 = values[4]; //ยอดโอน
+                                          final value21 = values[5]; //ปลายทาง
+
+                                          val3.text = value1.toString();
+                                          val4.text = value2.toString();
+                                          val7.text = value7.toString();
+
+                                          List<String> arrTrans =
+                                              value19.toString().split('=');
+                                          val19.text = arrTrans[1];
+
+                                          List<String> arrCash =
+                                              value21.toString().split('=');
+                                          val21.text = arrCash[1];
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color.fromRGBO(
+                                                      100, 34, 29, 1)),
+                                        ),
+                                        child: Text('ตรวจสอบ'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            resetForm(true);
+                                          });
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.green),
+                                        ),
+                                        child: Text('Reset'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            //----Start Row
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: TextFormField(
+                                  controller:
+                                      val1, //editing controller of this TextField
+                                  decoration: InputDecoration(
+                                      icon: Icon(Icons
+                                          .calendar_today), //icon of text field
+                                      labelText: "วันที่" //label text of field
+                                      ),
+                                  readOnly:
+                                      true, //set it true, so that user will not able to edit text
+                                  onTap: () async {
+                                    DateTime? pickedDate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(2000),
+                                        lastDate: DateTime(2101));
+
+                                    if (pickedDate != null) {
+                                      String formattedDate =
+                                          DateFormat('dd-MM-yyyy')
+                                              .format(pickedDate);
+                                      val1.text = formattedDate;
+                                    } else {
+                                      val1.text = "";
+                                      print("Date is not selected");
+                                    }
+                                  },
+                                )),
+                              ],
+                            ),
+                            //----Start Row
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val3,
+                                    decoration:
+                                        InputDecoration(labelText: 'ที่อยู่ *'),
+                                    keyboardType: TextInputType.text,
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color: Color.fromARGB(255, 144, 0, 0)
+                                            .withOpacity(0.6)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val4,
+                                    keyboardType: TextInputType.phone,
+                                    decoration:
+                                        InputDecoration(labelText: 'โทร *'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color: Color.fromARGB(255, 144, 0, 0)
+                                            .withOpacity(0.6)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val7,
+                                    keyboardType: TextInputType.text,
+                                    decoration:
+                                        InputDecoration(labelText: 'Facebook'),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val19,
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        labelText: '(เงินสด) ยอดเงิน'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color: Color.fromRGBO(247, 48, 13, 1)
+                                            .withOpacity(0.6)),
+                                  ),
+                                ),
+                                // Expanded(
+                                //   child: TextFormField(
+                                //     controller: val20,
+                                //     keyboardType: TextInputType.number,
+                                //     decoration: InputDecoration(
+                                //         labelText: '(เงินสด) ยอดโอน'),
+                                //     style: TextStyle(
+                                //         fontStyle: FontStyle.normal,
+                                //         color: Color.fromRGBO(247, 48, 13, 1)
+                                //             .withOpacity(0.6)),
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val21,
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                        labelText: '(ปลายทาง) ยอดเงิน'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color: Color.fromRGBO(26, 6, 211, 1)
+                                            .withOpacity(0.6)),
+                                  ),
+                                ),
+                                // Expanded(
+                                //     child: TextFormField(
+                                //   controller:
+                                //       val22, //editing controller of this TextField
+                                //   decoration: InputDecoration(
+                                //       icon: Icon(Icons
+                                //           .calendar_today), //icon of text field
+                                //       labelText:
+                                //           "(ปลายทาง) วันที่รับเงิน" //label text of field
+                                //       ),
+                                //   readOnly:
+                                //       true, //set it true, so that user will not able to edit text
+                                //   onTap: () async {
+                                //     DateTime? pickedDate = await showDatePicker(
+                                //         context: context,
+                                //         initialDate: DateTime.now(),
+                                //         firstDate: DateTime(2000),
+                                //         lastDate: DateTime(2101));
+
+                                //     if (pickedDate != null) {
+                                //       String formattedDate =
+                                //           DateFormat('dd-MM-yyyy')
+                                //               .format(pickedDate);
+                                //       val22.text = formattedDate;
+                                //     } else {
+                                //       val22.text = "";
+                                //       print("Date is not selected");
+                                //     }
+                                //   },
+                                // )),
+                                // Expanded(
+                                //   child: TextFormField(
+                                //     controller: val23,
+                                //     keyboardType: TextInputType.number,
+                                //     decoration: InputDecoration(
+                                //         labelText: '(ปลายทาง) ยอดรับ'),
+                                //     style: TextStyle(
+                                //         fontStyle: FontStyle.normal,
+                                //         color: Color.fromRGBO(26, 6, 211, 1)
+                                //             .withOpacity(0.6)),
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                            //----Start Row
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: TextFormField(
+                                  controller:
+                                      val5, //editing controller of this TextField
+                                  decoration: const InputDecoration(
+                                      icon: Icon(Icons
+                                          .calendar_today), //icon of text field
+                                      labelText:
+                                          "วันที่ส่ง" //label text of field
+                                      ),
+                                  readOnly:
+                                      true, //set it true, so that user will not able to edit text
+                                  onTap: () async {
+                                    DateTime? pickedDate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(2000),
+                                        lastDate: DateTime(2101));
+
+                                    if (pickedDate != null) {
+                                      String formattedDate =
+                                          DateFormat('dd-MM-yyyy')
+                                              .format(pickedDate);
+                                      val5.text = formattedDate;
+                                    } else {
+                                      val5.text = "";
+                                      print("Date is not selected");
+                                    }
+                                  },
+                                )),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val6,
+                                    keyboardType: TextInputType.text,
+                                    decoration:
+                                        InputDecoration(labelText: 'เลขพัสดุ'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        color: Color.fromARGB(255, 20, 160, 2)
+                                            .withOpacity(0.6)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: DropdownButton(
+                                    dropdownColor:
+                                        Color.fromRGBO(9, 155, 246, 1),
+                                    value: selectval,
+                                    onChanged: (value) {
                                       setState(() {
-                                        resetForm(true);
+                                        selectval = value.toString();
                                       });
                                     },
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.green),
-                                    ),
-                                    child: Text('Reset'),
+                                    items: listitems.map((itemone) {
+                                      return DropdownMenuItem(
+                                          value: itemone, child: Text(itemone));
+                                    }).toList(),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        //----Start Row
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: TextFormField(
-                              controller:
-                                  val1, //editing controller of this TextField
-                              decoration: InputDecoration(
-                                  icon: Icon(Icons
-                                      .calendar_today), //icon of text field
-                                  labelText: "วันที่" //label text of field
+                                ),
+                                Container(
+                                  width: 120,
+                                  child: DropdownButton(
+                                    value: selectvalSize,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        selectvalSize = value.toString();
+                                      });
+                                    },
+                                    items: listitemsSize.map((itemone) {
+                                      return DropdownMenuItem(
+                                          value: itemone, child: Text(itemone));
+                                    }).toList(),
                                   ),
-                              readOnly:
-                                  true, //set it true, so that user will not able to edit text
-                              onTap: () async {
-                                DateTime? pickedDate = await showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(2000),
-                                    lastDate: DateTime(2101));
-
-                                if (pickedDate != null) {
-                                  String formattedDate =
-                                      DateFormat('dd-MM-yyyy')
-                                          .format(pickedDate);
-                                  val1.text = formattedDate;
-                                } else {
-                                  val1.text = "";
-                                  print("Date is not selected");
-                                }
-                              },
-                            )),
-                          ],
-                        ),
-                        //----Start Row
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: val3,
-                                decoration:
-                                    InputDecoration(labelText: 'ที่อยู่ *'),
-                                keyboardType: TextInputType.text,
-                                style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    color: Color.fromARGB(255, 144, 0, 0)
-                                        .withOpacity(0.6)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: val4,
-                                keyboardType: TextInputType.phone,
-                                decoration: InputDecoration(labelText: 'โทร *'),
-                                style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    color: Color.fromARGB(255, 144, 0, 0)
-                                        .withOpacity(0.6)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: val7,
-                                keyboardType: TextInputType.text,
-                                decoration:
-                                    InputDecoration(labelText: 'Facebook'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 50,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: val19,
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                    labelText: '(เงินสด) ยอดเงิน'),
-                                style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    color: Color.fromRGBO(247, 48, 13, 1)
-                                        .withOpacity(0.6)),
-                              ),
-                            ),
-                            // Expanded(
-                            //   child: TextFormField(
-                            //     controller: val20,
-                            //     keyboardType: TextInputType.number,
-                            //     decoration: InputDecoration(
-                            //         labelText: '(เงินสด) ยอดโอน'),
-                            //     style: TextStyle(
-                            //         fontStyle: FontStyle.normal,
-                            //         color: Color.fromRGBO(247, 48, 13, 1)
-                            //             .withOpacity(0.6)),
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: val21,
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                    labelText: '(ปลายทาง) ยอดเงิน'),
-                                style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    color: Color.fromRGBO(26, 6, 211, 1)
-                                        .withOpacity(0.6)),
-                              ),
-                            ),
-                            // Expanded(
-                            //     child: TextFormField(
-                            //   controller:
-                            //       val22, //editing controller of this TextField
-                            //   decoration: InputDecoration(
-                            //       icon: Icon(Icons
-                            //           .calendar_today), //icon of text field
-                            //       labelText:
-                            //           "(ปลายทาง) วันที่รับเงิน" //label text of field
-                            //       ),
-                            //   readOnly:
-                            //       true, //set it true, so that user will not able to edit text
-                            //   onTap: () async {
-                            //     DateTime? pickedDate = await showDatePicker(
-                            //         context: context,
-                            //         initialDate: DateTime.now(),
-                            //         firstDate: DateTime(2000),
-                            //         lastDate: DateTime(2101));
-
-                            //     if (pickedDate != null) {
-                            //       String formattedDate =
-                            //           DateFormat('dd-MM-yyyy')
-                            //               .format(pickedDate);
-                            //       val22.text = formattedDate;
-                            //     } else {
-                            //       val22.text = "";
-                            //       print("Date is not selected");
-                            //     }
-                            //   },
-                            // )),
-                            // Expanded(
-                            //   child: TextFormField(
-                            //     controller: val23,
-                            //     keyboardType: TextInputType.number,
-                            //     decoration: InputDecoration(
-                            //         labelText: '(ปลายทาง) ยอดรับ'),
-                            //     style: TextStyle(
-                            //         fontStyle: FontStyle.normal,
-                            //         color: Color.fromRGBO(26, 6, 211, 1)
-                            //             .withOpacity(0.6)),
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                        //----Start Row
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: TextFormField(
-                              controller:
-                                  val5, //editing controller of this TextField
-                              decoration: InputDecoration(
-                                  icon: Icon(Icons
-                                      .calendar_today), //icon of text field
-                                  labelText: "วันที่ส่ง" //label text of field
+                                ),
+                                Container(
+                                  width: 50,
+                                  child: TextFormField(
+                                    controller: valTotal..text = '1',
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    decoration: InputDecoration(
+                                        labelText: 'จำนวน',
+                                        contentPadding:
+                                            EdgeInsets.fromLTRB(10, 0, 0, 0)),
                                   ),
-                              readOnly:
-                                  true, //set it true, so that user will not able to edit text
-                              onTap: () async {
-                                DateTime? pickedDate = await showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(2000),
-                                    lastDate: DateTime(2101));
-
-                                if (pickedDate != null) {
-                                  String formattedDate =
-                                      DateFormat('dd-MM-yyyy')
-                                          .format(pickedDate);
-                                  val5.text = formattedDate;
-                                } else {
-                                  val5.text = "";
-                                  print("Date is not selected");
-                                }
-                              },
-                            )),
-                            Expanded(
-                              child: TextFormField(
-                                controller: val6,
-                                keyboardType: TextInputType.text,
-                                decoration:
-                                    InputDecoration(labelText: 'เลขพัสดุ'),
-                                style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    color: Color.fromARGB(255, 20, 160, 2)
-                                        .withOpacity(0.6)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 50,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: DropdownButton(
-                                dropdownColor: Color.fromRGBO(9, 155, 246, 1),
-                                value: selectval,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectval = value.toString();
-                                  });
-                                },
-                                items: listitems.map((itemone) {
-                                  return DropdownMenuItem(
-                                      value: itemone, child: Text(itemone));
-                                }).toList(),
-                              ),
-                            ),
-                            Container(
-                              width: 120,
-                              child: DropdownButton(
-                                value: selectvalSize,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectvalSize = value.toString();
-                                  });
-                                },
-                                items: listitemsSize.map((itemone) {
-                                  return DropdownMenuItem(
-                                      value: itemone, child: Text(itemone));
-                                }).toList(),
-                              ),
-                            ),
-                            Container(
-                              width: 50,
-                              child: TextFormField(
-                                controller: valTotal..text = '1',
-                                keyboardType: TextInputType.number,
-                                textAlign: TextAlign.center,
-                                decoration: InputDecoration(
-                                    labelText: 'จำนวน',
-                                    contentPadding:
-                                        EdgeInsets.fromLTRB(10, 0, 0, 0)),
-                              ),
-                            ),
-                            Container(
-                              width: 30,
-                              child: Column(
-                                children: <Widget>[
-                                  IconButton(
-                                    icon: Icon(Icons.add_circle),
-                                    color: Theme.of(context).iconTheme.color,
-                                    iconSize: 30,
-                                    onPressed: () {
-                                      bool flag = false;
-                                      if (selectval == "กางเกง" &&
-                                          (selectvalSize == "M" ||
-                                              selectvalSize == "L" ||
-                                              selectvalSize == "XL")) {
-                                        flag = true;
-                                        // showMsgDialog(context,
-                                        //     "เลิกไซส์ กางเกงไม่ถูกต้อง");
-                                        // return;
-                                      }
-                                      if (selectval != "กางเกง" &&
-                                          (selectvalSize == "36" ||
-                                              selectvalSize == "40" ||
-                                              selectvalSize == "42" ||
-                                              selectvalSize == "44" ||
-                                              selectvalSize == "48" ||
-                                              selectvalSize == "52" ||
-                                              selectvalSize == "56")) {
-                                        flag = true;
-                                      }
-                                      if ((selectval == "" ||
-                                              selectvalSize == "") ||
-                                          (valTotal.text == "0" ||
-                                              valTotal.text == "")) {
-                                        flag = false;
-                                      }
-                                      print(flag);
-                                      if (!flag) {
-                                        showMsgDialog(context,
-                                            "เลือกข้อมูลแบบ-ไซส์-จำนวน \nให้ถูกต้อง");
-                                        return;
-                                      } else {
-                                        setState(() {
-                                          arrModels.add(
-                                              "$selectval|$selectvalSize|${valTotal.text}");
-                                        });
-                                      }
-                                      /*
+                                ),
+                                Container(
+                                  width: 30,
+                                  child: Column(
+                                    children: <Widget>[
+                                      IconButton(
+                                        icon: Icon(Icons.add_circle),
+                                        color:
+                                            Theme.of(context).iconTheme.color,
+                                        iconSize: 30,
+                                        onPressed: () {
+                                          bool flag = false;
+                                          if (selectval == "กางเกง" &&
+                                              (selectvalSize == "M" ||
+                                                  selectvalSize == "L" ||
+                                                  selectvalSize == "XL")) {
+                                            flag = true;
+                                            // showMsgDialog(context,
+                                            //     "เลิกไซส์ กางเกงไม่ถูกต้อง");
+                                            // return;
+                                          }
+                                          if (selectval != "กางเกง" &&
+                                              (selectvalSize == "36" ||
+                                                  selectvalSize == "40" ||
+                                                  selectvalSize == "42" ||
+                                                  selectvalSize == "44" ||
+                                                  selectvalSize == "48" ||
+                                                  selectvalSize == "52" ||
+                                                  selectvalSize == "56")) {
+                                            flag = true;
+                                          }
+                                          if ((selectval == "" ||
+                                                  selectvalSize == "") ||
+                                              (valTotal.text == "0" ||
+                                                  valTotal.text == "")) {
+                                            flag = false;
+                                          }
+                                          print(flag);
+                                          if (!flag) {
+                                            showMsgDialog(context,
+                                                "เลือกข้อมูลแบบ-ไซส์-จำนวน \nให้ถูกต้อง");
+                                            return;
+                                          } else {
+                                            setState(() {
+                                              arrModels.add(
+                                                  "$selectval|$selectvalSize|${valTotal.text}");
+                                            });
+                                          }
+                                          /*
                                         if ((selectval == "" ||
                                                 selectvalSize == "") ||
                                             (valTotal.text == "0" ||
@@ -753,140 +795,155 @@ class _MyAppState extends State<MyApp> {
                                           });
                                         }
                                         */
-                                    },
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 50,
-                        ),
-                        Column(
-                          children: arrModels.map((_txtLine) {
-                            final _arr = _txtLine.split('|');
-                            return Container(
-                              // ignore: sort_child_properties_last
-                              child: ListTile(
-                                title: Text(_arr[0] +
-                                    "     Size: " +
-                                    _arr[1] +
-                                    "     จำนวน: " +
-                                    _arr[2]),
-                                //subtitle: Text(_arr[1] + ":" + _arr[2]),
-                                trailing: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      primary: Colors.redAccent),
-                                  child: Icon(Icons.delete),
-                                  onPressed: () {
-                                    setState(() {
-                                      arrModels.removeWhere(
-                                          (item) => item == _txtLine);
-                                    });
-                                  },
-                                ),
-                              ),
-                              margin: EdgeInsets.all(5),
-                              padding: EdgeInsets.all(5),
-                              color: Colors.green[100],
-                            );
-                          }).toList(),
-                        ),
-                        SizedBox(
-                          height: 150,
-                        ),
-                        //----Start Row
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: val24,
-                                keyboardType: TextInputType.text,
-                                decoration:
-                                    InputDecoration(labelText: 'หมายเหตุ'),
-                                style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    color: Color.fromARGB(255, 10, 109, 240)
-                                        .withOpacity(0.6)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: <Widget>[
-                                  ElevatedButton(
-                                    onPressed: () async {
-                                      if (val3.text == "" ||
-                                          (arrModels.isEmpty) ||
-                                          val4.text.isEmpty) {
-                                        showMsgDialog(
-                                            context, "ระบุข้อมูลไม่ครบ");
-                                      } else {
-                                        showAlertDialog(context);
-                                        // if (_flagConfirm) {
-                                        //   await _submitForm();
-                                        // }
-                                      }
-                                    },
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Color.fromRGBO(100, 34, 29, 1)),
-                                    ),
-                                    child: Text('บันทึก'),
+                                        },
+                                      )
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 50,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                minLines: 3,
-                                maxLines: null,
-                                controller: txtFillTmp,
-                                keyboardType: TextInputType.multiline,
-                                decoration:
-                                    InputDecoration(labelText: 'ตัวอย่าง'),
-                                style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    color: Colors.black),
-                              ),
+                            SizedBox(
+                              height: 50,
                             ),
-                          ],
-                        ),
-                      ])),
+                            Column(
+                              children: arrModels.map((_txtLine) {
+                                final _arr = _txtLine.split('|');
+                                return Container(
+                                  // ignore: sort_child_properties_last
+                                  child: ListTile(
+                                    title: Text(_arr[0] +
+                                        "     Size: " +
+                                        _arr[1] +
+                                        "     จำนวน: " +
+                                        _arr[2]),
+                                    //subtitle: Text(_arr[1] + ":" + _arr[2]),
+                                    trailing: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.redAccent),
+                                      child: Icon(Icons.delete),
+                                      onPressed: () {
+                                        setState(() {
+                                          arrModels.removeWhere(
+                                              (item) => item == _txtLine);
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  margin: EdgeInsets.all(5),
+                                  padding: EdgeInsets.all(5),
+                                  color: Colors.green[100],
+                                );
+                              }).toList(),
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            //----Start Row
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val24,
+                                    keyboardType: TextInputType.text,
+                                    decoration:
+                                        InputDecoration(labelText: 'หมายเหตุ'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        color: Color.fromARGB(255, 10, 109, 240)
+                                            .withOpacity(0.6)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          if (val3.text == "" ||
+                                              (arrModels.isEmpty) ||
+                                              val4.text.isEmpty) {
+                                            showMsgDialog(
+                                                context, "ระบุข้อมูลไม่ครบ");
+                                          } else {
+                                            showAlertDialog(context);
+                                            // if (_flagConfirm) {
+                                            //   await _submitForm();
+                                            // }
+                                          }
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color.fromRGBO(
+                                                      100, 34, 29, 1)),
+                                        ),
+                                        child: Text('บันทึก'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    minLines: 3,
+                                    maxLines: null,
+                                    controller: txtFillTmp,
+                                    keyboardType: TextInputType.multiline,
+                                    decoration:
+                                        InputDecoration(labelText: 'ตัวอย่าง'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color: Colors.black),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ])),
+                ),
+              ])),
+        ),
+      ),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+            // sets the background color of the `BottomNavigationBar`
+            canvasColor: const Color.fromRGBO(2, 93, 221, 1),
+            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+            primaryColor: Colors.red,
+            textTheme: Theme.of(context).textTheme.copyWith(
+                bodySmall: const TextStyle(
+                    color: Color.fromARGB(255, 2, 161,
+                        57)))), // sets the inactive color of the `BottomNavigationBar`
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
             ),
-          ])),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Add',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.delete),
-            label: 'Delete',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add),
+                label: 'Add',
+                backgroundColor: Color.fromRGBO(100, 0, 255, 0.5)),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.delete),
+              label: 'Delete',
+            ),
+          ],
+        ),
       ),
     );
   }
