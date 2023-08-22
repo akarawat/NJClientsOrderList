@@ -120,42 +120,35 @@ class Data {
   }
 }
 */
-
-class Data {
-  final String firstName;
-  final String lastName;
-  final int age;
-
-  Data({required this.firstName, required this.lastName, required this.age});
-
-  factory Data.fromJson(Map<String, dynamic> json) {
-    return Data(
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      age: json['age'],
-    );
-  }
-}
-
 Future<List<Data>> fetchData() async {
+  // var url = Uri.parse('https://jsonplaceholder.typicode.com/albums');
+  // var url = Uri.parse(
+  //     'https://script.google.com/macros/s/AKfycbxfCGjLeENRqPRGiH6UOhxEcEZclanPc0VZG2y_X1f8Re1zgO92OabM8Z4qSkYCSV5bvg/exec?func=stock');
   var url = Uri.parse(
-      'https://script.google.com/macros/s/AKfycbyh-aWjn2dWVP8NvzYuMt0Ctq1mTH7UhahzC9O_YrqW/dev?func=params');
+      'https://script.google.com/macros/s/AKfycbw_k_ydak248IhdK-5EyC46-b_HQabz2vKMwr4sJzdOonmKRilsmjHKvXU4ZQEneXf7Ww/exec?func=stock');
+
   final response = await http.get(url);
-  response.headers;
-
-  // const url =
-  //     'https://script.google.com/macros/s/AKfycbyh-aWjn2dWVP8NvzYuMt0Ctq1mTH7UhahzC9O_YrqW/dev?func=stock';
-  // final response = await http.get(Uri.parse(url), headers: {
-  //   "Access-Control-Allow-Origin": "*",
-  //   'Content-Type': 'application/json',
-  //   'Accept': '*/*'
-  // });
-
   if (response.statusCode == 200) {
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((data) => Data.fromJson(data)).toList();
   } else {
     throw Exception('Unexpected error occured!');
+  }
+}
+
+class Data {
+  final String userId;
+  final String id;
+  final String title;
+
+  Data({required this.userId, required this.id, required this.title});
+
+  factory Data.fromJson(Map<String, dynamic> json) {
+    return Data(
+      userId: json['userId'],
+      id: json['id'],
+      title: json['title'],
+    );
   }
 }
 
@@ -245,7 +238,7 @@ class _HomeStockState extends State<HomeStock> {
                     height: 75,
                     color: Colors.white,
                     child: Center(
-                      child: Text(snapshot.data![index].firstName),
+                      child: Text(snapshot.data![index].title),
                     ),
                   );
                 });

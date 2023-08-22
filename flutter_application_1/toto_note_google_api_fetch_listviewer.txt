@@ -1,0 +1,5 @@
+1. ทำ api ใน Mode Deploy เท่าัน้ / ทำใน Debug จะไม่ได้ จะขึ้น XMLHttpRequest error
+2. สร้าง Model ไว้รอ โดยต้องได้หน้าตาเป็น Json เท่านั้น
+3. ดูตัวอย่าง Fetch Data From APi: https://flutterforyou.com/how-to-fetch-data-from-api-and-show-in-flutter-listview/?expand_article=1
+
+
