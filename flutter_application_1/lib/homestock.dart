@@ -122,24 +122,35 @@ class Data {
 */
 
 class Data {
-  final int userId;
-  final int id;
-  final String title;
+  final String firstName;
+  final String lastName;
+  final int age;
 
-  Data({required this.userId, required this.id, required this.title});
+  Data({required this.firstName, required this.lastName, required this.age});
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      age: json['age'],
     );
   }
 }
 
 Future<List<Data>> fetchData() async {
-  var url = Uri.parse('https://jsonplaceholder.typicode.com/albums');
+  var url = Uri.parse(
+      'https://script.google.com/macros/s/AKfycbyh-aWjn2dWVP8NvzYuMt0Ctq1mTH7UhahzC9O_YrqW/dev?func=params');
   final response = await http.get(url);
+  response.headers;
+
+  // const url =
+  //     'https://script.google.com/macros/s/AKfycbyh-aWjn2dWVP8NvzYuMt0Ctq1mTH7UhahzC9O_YrqW/dev?func=stock';
+  // final response = await http.get(Uri.parse(url), headers: {
+  //   "Access-Control-Allow-Origin": "*",
+  //   'Content-Type': 'application/json',
+  //   'Accept': '*/*'
+  // });
+
   if (response.statusCode == 200) {
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((data) => Data.fromJson(data)).toList();
@@ -234,7 +245,7 @@ class _HomeStockState extends State<HomeStock> {
                     height: 75,
                     color: Colors.white,
                     child: Center(
-                      child: Text(snapshot.data![index].title),
+                      child: Text(snapshot.data![index].firstName),
                     ),
                   );
                 });
