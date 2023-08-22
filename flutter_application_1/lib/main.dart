@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:njoroder_application/controller/stock_controller.dart';
 import 'package:njoroder_application/homestock.dart';
+import 'package:njoroder_application/model/stock_model.dart';
 import 'package:njoroder_application/row_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -154,53 +156,53 @@ class _MyAppState extends State<MyApp> {
         val25Post.text += name + ",";
       }
     }
-    //if (_formKey.currentState!.validate()) {
-    // If the form is valid, proceed.
-    PostbackForm feedbackForm = PostbackForm(
-        val1.text.trim(),
-        "-",
-        val3.text.trimLeft().trimRight(),
-        val4.text.trimLeft().trimRight(),
-        val5.text.trimLeft().trimRight(),
-        val6.text.trimLeft().trimRight(),
-        val7.text.trimLeft().trimRight(),
-        val8.text.trimLeft().trimRight(),
-        val9.text.trimLeft().trimRight(),
-        val10.text.trimLeft().trimRight(),
-        val11.text.trimLeft().trimRight(),
-        val12.text.trimLeft().trimRight(),
-        val13.text.trimLeft().trimRight(),
-        val14.text.trimLeft().trimRight(),
-        val15.text.trimLeft().trimRight(),
-        val16.text.trimLeft().trimRight(),
-        val17.text.trimLeft().trimRight(),
-        val18.text.trimLeft().trimRight(),
-        val19.text.trimLeft().trimRight(),
-        val20.text.trimLeft().trimRight(),
-        val21.text.trimLeft().trimRight(),
-        val22.text.trimLeft().trimRight(),
-        val23.text.trimLeft().trimRight(),
-        val24.text.trimLeft().trimRight(),
-        val25Post.text.trimLeft().trimRight());
+    if (_formKey.currentState!.validate()) {
+      // If the form is valid, proceed.
+      PostbackForm feedbackForm = PostbackForm(
+          val1.text.trim(),
+          "-",
+          val3.text.trimLeft().trimRight(),
+          val4.text.trimLeft().trimRight(),
+          val5.text.trimLeft().trimRight(),
+          val6.text.trimLeft().trimRight(),
+          val7.text.trimLeft().trimRight(),
+          val8.text.trimLeft().trimRight(),
+          val9.text.trimLeft().trimRight(),
+          val10.text.trimLeft().trimRight(),
+          val11.text.trimLeft().trimRight(),
+          val12.text.trimLeft().trimRight(),
+          val13.text.trimLeft().trimRight(),
+          val14.text.trimLeft().trimRight(),
+          val15.text.trimLeft().trimRight(),
+          val16.text.trimLeft().trimRight(),
+          val17.text.trimLeft().trimRight(),
+          val18.text.trimLeft().trimRight(),
+          val19.text.trimLeft().trimRight(),
+          val20.text.trimLeft().trimRight(),
+          val21.text.trimLeft().trimRight(),
+          val22.text.trimLeft().trimRight(),
+          val23.text.trimLeft().trimRight(),
+          val24.text.trimLeft().trimRight(),
+          val25Post.text.trimLeft().trimRight());
 
-    FormPostController formController = FormPostController();
-    formController.submitForm(feedbackForm, (String response) {
-      print("Response: $response");
-      if (response == FormPostController.STATUS_SUCCESS) {
-        flgUpdate = true;
-      } else {
-        flgUpdate = false;
-      }
-    });
-    resetForm(true);
-    //}
+      FormPostController formController = FormPostController();
+      formController.submitForm(feedbackForm, (String response) {
+        print("Response: $response");
+        if (response == FormPostController.STATUS_SUCCESS) {
+          flgUpdate = true;
+        } else {
+          flgUpdate = false;
+        }
+      });
+      resetForm(true);
+    }
   }
 
   // bool loadStock = false;
-  // Future<bool> _getStock() async {
+  // Future<List<String>> getStock() async {
   //   if (_formKey.currentState!.validate()) {
-  //     FormPostController formController = FormPostController();
-  //     formController.getStock((String response) {
+  //     FormStockController formStockController = FormStockController();
+  //     formStockController.getStock((String response) {
   //       print("Response: $response");
   //     });
   //   }
@@ -296,15 +298,6 @@ class _MyAppState extends State<MyApp> {
       val5.text = DateFormat('dd-MM-yyyy')
           .format(DateTime.now().add(const Duration(days: 1)))
           .toString();
-    //loadStock
-    Future _getStock() async {
-      if (_formKey.currentState!.validate()) {
-        FormPostController formController = FormPostController();
-        formController.getStock((String response) {
-          print("Response: $response");
-        });
-      }
-    }
 
     int _selectedIndex = 0; //New
     void _onItemTapped(int index) {
