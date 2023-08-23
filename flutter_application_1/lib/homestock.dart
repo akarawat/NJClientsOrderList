@@ -14,144 +14,6 @@ void main() {
   ));
 }
 
-/*
-late final dynamic sample;
-Future<List<Data>> fetchData() async {
-  //List<dynamic> items;
-  var url = Uri.parse(
-      'https://script.google.com/macros/s/AKfycbw6nzls58G28NF2R4L5m475NMsyi3VdpvSjE4c_thSxVBOAxgVeOS9W9WmVtspOHowdEw/exec?func=params');
-  final response = await http.get(url);
-  if (response.statusCode == 200) {
-    List jsonResponse = json.decode(response.body);
-
-    sample = jsonResponse;
-    // List<Data> lstData = List.empty();
-    // lstData.add(sample.asMap().forEach((index, value) => f2(index, value)));
-    // return lstData;
-    //-->return sample.asMap().forEach((index, value) => f2(index, value));
-
-    //return sample.asMap().forEach((index, value) {});
-
-    // return sample.asMap().forEach((index, value) {
-    //   //var f2 = (index, value);
-    //   Data resdata = Data(
-    //       mCode: value[0].toString(),
-    //       mName: value[1].toString(),
-    //       size36: value[2].toString(),
-    //       size40: value[3].toString(),
-    //       size42: value[4].toString(),
-    //       size44: value[5].toString(),
-    //       size48: value[6].toString(),
-    //       size52: value[7].toString(),
-    //       size56: value[8].toString(),
-    //       sizeL: value[9].toString(),
-    //       sizeM: value[10].toString(),
-    //       sizeXL: value[11].toString());
-    //   return resdata;
-    // });
-
-    //return jsonResponse.map((resdata) => Data.fromJson(resdata)).toList();
-    // return jsonResponse.map((sample) => Data.fromJson(sample)).toList();
-  } else {
-    throw Exception('Unexpected error occured!');
-  }
-}
-
-// f2(int index, value) {
-//   //var val2 = value[2].toString() == '' ?? '0';
-//   Data resdata = Data(
-//       mCode: value[0].toString(),
-//       mName: value[1].toString(),
-//       size36: value[2].toString(),
-//       size40: value[3].toString(),
-//       size42: value[4].toString(),
-//       size44: value[5].toString(),
-//       size48: value[6].toString(),
-//       size52: value[7].toString(),
-//       size56: value[8].toString(),
-//       sizeL: value[9].toString(),
-//       sizeM: value[10].toString(),
-//       sizeXL: value[11].toString());
-//   return resdata;
-// }
-class Data {
-  final String? mCode;
-  final String? mName;
-  final String? size36;
-  final String? size40;
-  final String? size42;
-  final String? size44;
-  final String? size48;
-  final String? size52;
-  final String? size56;
-  final String? sizeM;
-  final String? sizeL;
-  final String? sizeXL;
-
-  Data(
-      {required this.mCode,
-      required this.mName,
-      required this.size36,
-      required this.size40,
-      required this.size42,
-      required this.size44,
-      required this.size48,
-      required this.size52,
-      required this.size56,
-      required this.sizeL,
-      required this.sizeM,
-      required this.sizeXL});
-
-  factory Data.fromJson(Map<String, String> json) {
-    return Data(
-      mCode: json['mCode'] as String,
-      mName: json['mName'] as String,
-      size36: json['size36'] as String,
-      size40: json['size40'] as String,
-      size42: json['size42'] as String,
-      size44: json['size44'] as String,
-      size48: json['size48'] as String,
-      size52: json['size52'] as String,
-      size56: json['size56'] as String,
-      sizeM: json['sizeM'] as String,
-      sizeL: json['sizeL'] as String,
-      sizeXL: json['sizeXL'] as String,
-    );
-  }
-}
-*/
-Future<List<Data>> fetchData() async {
-  // var url = Uri.parse('https://jsonplaceholder.typicode.com/albums');
-  // var url = Uri.parse(
-  //     'https://script.google.com/macros/s/AKfycbxfCGjLeENRqPRGiH6UOhxEcEZclanPc0VZG2y_X1f8Re1zgO92OabM8Z4qSkYCSV5bvg/exec?func=stock');
-  var url = Uri.parse(
-      'https://script.google.com/macros/s/AKfycbw_k_ydak248IhdK-5EyC46-b_HQabz2vKMwr4sJzdOonmKRilsmjHKvXU4ZQEneXf7Ww/exec?func=stock');
-
-  final response = await http.get(url);
-  if (response.statusCode == 200) {
-    List jsonResponse = json.decode(response.body);
-    return jsonResponse.map((data) => Data.fromJson(data)).toList();
-  } else {
-    throw Exception('Unexpected error occured!');
-  }
-}
-
-class Data {
-  final String userId;
-  final String id;
-  final String title;
-
-  Data({required this.userId, required this.id, required this.title});
-
-  factory Data.fromJson(Map<String, dynamic> json) {
-    return Data(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
-  }
-}
-
 class HomeStock extends StatefulWidget {
   @override
   State<HomeStock> createState() => _HomeStockState();
@@ -161,7 +23,7 @@ class _HomeStockState extends State<HomeStock> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  FormStockController frmStock = FormStockController();
+  //FormStockController frmStock = FormStockController();
 
   //-->Start Message
   showMsgDialog(BuildContext context, String msg) {
@@ -235,11 +97,48 @@ class _HomeStockState extends State<HomeStock> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    height: 75,
+                    height: 50,
                     color: Colors.white,
-                    child: Center(
-                      child: Text(snapshot.data![index].title),
-                    ),
+                    alignment: Alignment.centerLeft,
+                    child: Column(children: <Widget>[
+                      Form(
+                          child: Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                      child: Text(snapshot.data![index].mName)),
+                                  Expanded(
+                                      child: Text(
+                                          "S36: ${snapshot.data![index].size36}")),
+                                  Expanded(
+                                      child: Text(
+                                          "S40: ${snapshot.data![index].size40}")),
+                                  Expanded(
+                                      child: Text(
+                                          "S42: ${snapshot.data![index].size42}")),
+                                  Expanded(
+                                      child: Text(
+                                          "S44: ${snapshot.data![index].size44}")),
+                                  Expanded(
+                                      child: Text(
+                                          "S48: ${snapshot.data![index].size48}")),
+                                  Expanded(
+                                      child: Text(
+                                          "S52: ${snapshot.data![index].size52}")),
+                                  Expanded(
+                                      child: Text(
+                                          "S56: ${snapshot.data![index].size56}")),
+                                ],
+                              ),
+                            ]),
+                      )),
+                    ]),
+                    //child: Text(snapshot.data![index].mName),
                   );
                 });
           } else if (snapshot.hasError) {
@@ -297,41 +196,6 @@ class _HomeStockState extends State<HomeStock> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class StockDataList extends StatelessWidget {
-  const StockDataList({super.key, required this.stockdatas});
-
-  final List<ResStockData> stockdatas;
-
-  @override
-  // Widget build(BuildContext context) {
-  //   return GridView.builder(
-  //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-  //       crossAxisCount: 2,
-  //     ),
-  //     itemCount: photos.length,
-  //     itemBuilder: (context, index) {
-  //       return Image.network(photos[index].thumbnailUrl);
-  //     },
-  //   );
-  // }
-  Widget build(BuildContext context) {
-    return GridView.count(
-      // Create a grid with 2 columns. If you change the scrollDirection to
-      // horizontal, this produces 2 rows.
-      crossAxisCount: 2,
-      // Generate 100 widgets that display their index in the List.
-      children: List.generate(100, (index) {
-        return Center(
-          child: Text(
-            'Item $index',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-        );
-      }),
     );
   }
 }

@@ -117,12 +117,14 @@ class _RowSettingState extends State<RowSetting> {
   void resetForm(bool resetFill) {
     setState(() {
       val1.text = "";
+      val2.text = "";
     });
   }
 
   @override
   Widget build(BuildContext context) {
     val1.text = "4";
+    val2.text = "";
     int _selectedIndex = 0; //New
     void _onItemTapped(int index) {
       setState(() {
@@ -221,14 +223,14 @@ class _RowSettingState extends State<RowSetting> {
                                 children: <Widget>[
                                   ElevatedButton(
                                     onPressed: () async {
-                                      showMsgDialog(context, "กำลังทำจ้า");
-                                      // if (val1.text == "" ||
-                                      //     val2.text.isEmpty) {
-                                      //   showMsgDialog(
-                                      //       context, "ระบุข้อมูลไม่ครบ");
-                                      // } else {
-                                      //   showAlertDialog(context);
-                                      // }
+                                      //showMsgDialog(context, "กำลังทำจ้า");
+                                      if (val1.text == "" ||
+                                          val2.text.isEmpty) {
+                                        showMsgDialog(
+                                            context, "ระบุข้อมูลไม่ครบ");
+                                      } else {
+                                        showAlertDialog(context);
+                                      }
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
