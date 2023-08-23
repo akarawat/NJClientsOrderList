@@ -97,72 +97,47 @@ class _HomeStockState extends State<HomeStock> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    //height: 50,
-                    //height: 100,
-                    width: double.infinity,
-                    margin: const EdgeInsets.all(15),
-                    padding: const EdgeInsets.all(15),
+                    height: 50,
                     color: Colors.white,
                     alignment: Alignment.centerLeft,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                  child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: <Widget>[
-                                  Row(
-                                    children: [
-                                      Text(
-                                          "    ${snapshot.data![index].mName}"),
-                                    ],
-                                  )
+                    child: Column(children: <Widget>[
+                      Form(
+                        child: Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                      child: Text(snapshot.data![index].mName)),
+                                  Expanded(
+                                      child: Text(
+                                          "[S36: ${snapshot.data![index].size36R}]")),
+                                  Expanded(
+                                      child: Text(
+                                          "[S40: ${snapshot.data![index].size40R}]")),
+                                  Expanded(
+                                      child: Text(
+                                          "[S42: ${snapshot.data![index].size42R}]")),
+                                  Expanded(
+                                      child: Text(
+                                          "[S44: ${snapshot.data![index].size44R}]")),
+                                  Expanded(
+                                      child: Text(
+                                          "[S48: ${snapshot.data![index].size48R}]")),
+                                  Expanded(
+                                      child: Text(
+                                          "[S52: ${snapshot.data![index].size52R}]")),
+                                  Expanded(
+                                      child: Text(
+                                          "[S56: ${snapshot.data![index].size56R}]")),
                                 ],
-                              )),
-                              Expanded(
-                                child: LayoutBuilder(
-                                    builder: (context, constraints) {
-                                  if (snapshot.data![index].mName
-                                      .contains('กางเกงเล็ก')) {
-                                    return Text(
-                                        "#เล็ก Stock: ${snapshot.data![index].sizeM}, ");
-                                  } else if (snapshot.data![index].mName
-                                      .contains('กางเกงปกติ')) {
-                                    return Text(
-                                        "#ปกติ Stock: ${snapshot.data![index].sizeL}, ");
-                                  } else if (snapshot.data![index].mName
-                                      .contains('กางเกงพิเศษ')) {
-                                    return Text(
-                                        "#พิเศษ Stock: ${snapshot.data![index].sizeXL}, ");
-                                  } else {
-                                    return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                              " S 36:    ${snapshot.data![index].size36R}   "),
-                                          Text(
-                                              " S 40:    ${snapshot.data![index].size40R} "),
-                                          Text(
-                                              " S 42:    ${snapshot.data![index].size42R} "),
-                                          Text(
-                                              " S 44:    ${snapshot.data![index].size44R} "),
-                                          Text(
-                                              " S 48:    ${snapshot.data![index].size48R} "),
-                                          Text(
-                                              " S 52:    ${snapshot.data![index].size52R} "),
-                                          Text(
-                                              " S 56:    ${snapshot.data![index].size56R} "),
-                                        ]);
-                                  }
-                                }),
                               ),
-                            ],
-                          ),
-                        ]),
+                            ]),
+                      )),
+                    ]),
                     //child: Text(snapshot.data![index].mName),
                   );
                 });

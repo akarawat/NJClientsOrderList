@@ -521,11 +521,6 @@ class _MyAppState extends State<MyApp> {
                                             .withOpacity(0.6)),
                                   ),
                                 ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
                                 Expanded(
                                   child: TextFormField(
                                     controller: val7,
@@ -537,146 +532,7 @@ class _MyAppState extends State<MyApp> {
                               ],
                             ),
                             const SizedBox(
-                              height: 50,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: val19,
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                        labelText: '(เงินสด) ยอดเงิน'),
-                                    style: TextStyle(
-                                        fontStyle: FontStyle.normal,
-                                        color: Color.fromRGBO(247, 48, 13, 1)
-                                            .withOpacity(0.6)),
-                                  ),
-                                ),
-                                // Expanded(
-                                //   child: TextFormField(
-                                //     controller: val20,
-                                //     keyboardType: TextInputType.number,
-                                //     decoration: InputDecoration(
-                                //         labelText: '(เงินสด) ยอดโอน'),
-                                //     style: TextStyle(
-                                //         fontStyle: FontStyle.normal,
-                                //         color: Color.fromRGBO(247, 48, 13, 1)
-                                //             .withOpacity(0.6)),
-                                //   ),
-                                // ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: val21,
-                                    keyboardType: TextInputType.number,
-                                    decoration: const InputDecoration(
-                                        labelText: '(ปลายทาง) ยอดเงิน'),
-                                    style: TextStyle(
-                                        fontStyle: FontStyle.normal,
-                                        color: Color.fromRGBO(26, 6, 211, 1)
-                                            .withOpacity(0.6)),
-                                  ),
-                                ),
-                                // Expanded(
-                                //     child: TextFormField(
-                                //   controller:
-                                //       val22, //editing controller of this TextField
-                                //   decoration: InputDecoration(
-                                //       icon: Icon(Icons
-                                //           .calendar_today), //icon of text field
-                                //       labelText:
-                                //           "(ปลายทาง) วันที่รับเงิน" //label text of field
-                                //       ),
-                                //   readOnly:
-                                //       true, //set it true, so that user will not able to edit text
-                                //   onTap: () async {
-                                //     DateTime? pickedDate = await showDatePicker(
-                                //         context: context,
-                                //         initialDate: DateTime.now(),
-                                //         firstDate: DateTime(2000),
-                                //         lastDate: DateTime(2101));
-
-                                //     if (pickedDate != null) {
-                                //       String formattedDate =
-                                //           DateFormat('dd-MM-yyyy')
-                                //               .format(pickedDate);
-                                //       val22.text = formattedDate;
-                                //     } else {
-                                //       val22.text = "";
-                                //       print("Date is not selected");
-                                //     }
-                                //   },
-                                // )),
-                                // Expanded(
-                                //   child: TextFormField(
-                                //     controller: val23,
-                                //     keyboardType: TextInputType.number,
-                                //     decoration: InputDecoration(
-                                //         labelText: '(ปลายทาง) ยอดรับ'),
-                                //     style: TextStyle(
-                                //         fontStyle: FontStyle.normal,
-                                //         color: Color.fromRGBO(26, 6, 211, 1)
-                                //             .withOpacity(0.6)),
-                                //   ),
-                                // ),
-                              ],
-                            ),
-                            //----Start Row
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                    child: TextFormField(
-                                  controller:
-                                      val5, //editing controller of this TextField
-                                  decoration: const InputDecoration(
-                                      icon: Icon(Icons
-                                          .calendar_today), //icon of text field
-                                      labelText:
-                                          "วันที่ส่ง" //label text of field
-                                      ),
-                                  readOnly:
-                                      true, //set it true, so that user will not able to edit text
-                                  onTap: () async {
-                                    DateTime? pickedDate = await showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime.now(),
-                                        firstDate: DateTime(2000),
-                                        lastDate: DateTime(2101));
-
-                                    if (pickedDate != null) {
-                                      String formattedDate =
-                                          DateFormat('dd-MM-yyyy')
-                                              .format(pickedDate);
-                                      val5.text = formattedDate;
-                                    } else {
-                                      val5.text = "";
-                                      print("Date is not selected");
-                                    }
-                                  },
-                                )),
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: val6,
-                                    keyboardType: TextInputType.text,
-                                    decoration:
-                                        InputDecoration(labelText: 'เลขพัสดุ'),
-                                    style: TextStyle(
-                                        fontStyle: FontStyle.italic,
-                                        color: Color.fromARGB(255, 20, 160, 2)
-                                            .withOpacity(0.6)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 50,
+                              height: 25,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -796,40 +652,129 @@ class _MyAppState extends State<MyApp> {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 50,
+                            const SizedBox(
+                              height: 20,
                             ),
                             Column(
-                              children: arrModels.map((_txtLine) {
-                                final _arr = _txtLine.split('|');
+                              children: arrModels.map((txtLine) {
+                                final arr = txtLine.split('|');
                                 return Container(
                                   // ignore: sort_child_properties_last
                                   child: ListTile(
-                                    title: Text(_arr[0] +
-                                        "     Size: " +
-                                        _arr[1] +
-                                        "     จำนวน: " +
-                                        _arr[2]),
+                                    title: Text(
+                                        "${arr[0]}     Size: ${arr[1]}     จำนวน: ${arr[2]}"),
                                     //subtitle: Text(_arr[1] + ":" + _arr[2]),
                                     trailing: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                          primary: Colors.redAccent),
-                                      child: Icon(Icons.delete),
+                                          backgroundColor: Colors.redAccent),
+                                      child: const Icon(Icons.delete),
                                       onPressed: () {
                                         setState(() {
                                           arrModels.removeWhere(
-                                              (item) => item == _txtLine);
+                                              (item) => item == txtLine);
                                         });
                                       },
                                     ),
                                   ),
-                                  margin: EdgeInsets.all(5),
-                                  padding: EdgeInsets.all(5),
+                                  margin: const EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   color: Colors.green[100],
                                 );
                               }).toList(),
                             ),
-                            SizedBox(
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val19,
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                        labelText: '(เงินสด) ยอดเงิน'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color:
+                                            const Color.fromRGBO(247, 48, 13, 1)
+                                                .withOpacity(0.6)),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val21,
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                        labelText: '(ปลายทาง) ยอดเงิน'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color:
+                                            const Color.fromRGBO(26, 6, 211, 1)
+                                                .withOpacity(0.6)),
+                                  ),
+                                ),
+                                // Expanded(
+                                //   child: TextFormField(
+                                //     controller: val20,
+                                //     keyboardType: TextInputType.number,
+                                //     decoration: InputDecoration(
+                                //         labelText: '(เงินสด) ยอดโอน'),
+                                //     style: TextStyle(
+                                //         fontStyle: FontStyle.normal,
+                                //         color: Color.fromRGBO(247, 48, 13, 1)
+                                //             .withOpacity(0.6)),
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                            //----Start Row
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: TextFormField(
+                                  controller:
+                                      val5, //editing controller of this TextField
+                                  decoration: const InputDecoration(
+                                      icon: Icon(Icons
+                                          .calendar_today), //icon of text field
+                                      labelText:
+                                          "วันที่ส่ง" //label text of field
+                                      ),
+                                  readOnly:
+                                      true, //set it true, so that user will not able to edit text
+                                  onTap: () async {
+                                    DateTime? pickedDate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(2000),
+                                        lastDate: DateTime(2101));
+
+                                    if (pickedDate != null) {
+                                      String formattedDate =
+                                          DateFormat('dd-MM-yyyy')
+                                              .format(pickedDate);
+                                      val5.text = formattedDate;
+                                    } else {
+                                      val5.text = "";
+                                      print("Date is not selected");
+                                    }
+                                  },
+                                )),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: val6,
+                                    keyboardType: TextInputType.text,
+                                    decoration:
+                                        InputDecoration(labelText: 'เลขพัสดุ'),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        color: Color.fromARGB(255, 20, 160, 2)
+                                            .withOpacity(0.6)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
                               height: 25,
                             ),
                             //----Start Row
