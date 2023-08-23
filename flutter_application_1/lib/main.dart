@@ -219,6 +219,7 @@ class _MyAppState extends State<MyApp> {
     'คอจีนผ่าหน้า',
     'คอจีนกระเป๋า',
     'คอปก',
+    'คอจีนแขน4ส่วน',
     'กางเกง',
   ];
   String selectval = "";
@@ -932,8 +933,8 @@ class _MyAppState extends State<MyApp> {
                 label: 'Add',
                 backgroundColor: Color.fromRGBO(100, 0, 255, 0.5)),
             BottomNavigationBarItem(
-              icon: Icon(Icons.delete),
-              label: 'Delete',
+              icon: Icon(Icons.settings),
+              label: 'Settings',
             ),
           ],
         ),

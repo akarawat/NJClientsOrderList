@@ -4,12 +4,15 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:njoroder_application/controller/form_controller.dart';
+import 'package:njoroder_application/controller/formpost_controller.dart';
 import 'package:njoroder_application/homestock.dart';
 import 'package:njoroder_application/main.dart';
 import 'model/delrow_model.dart';
 import 'dart:async';
 import 'controller/delrow_controller.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -215,6 +218,9 @@ class _RowSettingState extends State<RowSetting> {
                             ),
                           ],
                         ),
+                        const SizedBox(
+                          height: 25,
+                        ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -246,6 +252,31 @@ class _RowSettingState extends State<RowSetting> {
                         ),
                         SizedBox(
                           height: 50,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: <Widget>[
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      const url = FormController.URLGoogle;
+                                      launchUrl(Uri.parse(url),
+                                          mode: LaunchMode.externalApplication);
+                                    },
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color.fromRGBO(
+                                                  1, 155, 14, 1)),
+                                    ),
+                                    child: const Text('Open Sheet'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ])),
             ),
@@ -292,8 +323,8 @@ class _RowSettingState extends State<RowSetting> {
               label: 'Add',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.delete),
-              label: 'Delete',
+              icon: Icon(Icons.settings),
+              label: 'Settings',
             ),
           ],
         ),

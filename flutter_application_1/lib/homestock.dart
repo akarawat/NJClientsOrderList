@@ -114,25 +114,25 @@ class _HomeStockState extends State<HomeStock> {
                                       child: Text(snapshot.data![index].mName)),
                                   Expanded(
                                       child: Text(
-                                          "S36: ${snapshot.data![index].size36}")),
+                                          "[S36: ${snapshot.data![index].size36R}]")),
                                   Expanded(
                                       child: Text(
-                                          "S40: ${snapshot.data![index].size40}")),
+                                          "[S40: ${snapshot.data![index].size40R}]")),
                                   Expanded(
                                       child: Text(
-                                          "S42: ${snapshot.data![index].size42}")),
+                                          "[S42: ${snapshot.data![index].size42R}]")),
                                   Expanded(
                                       child: Text(
-                                          "S44: ${snapshot.data![index].size44}")),
+                                          "[S44: ${snapshot.data![index].size44R}]")),
                                   Expanded(
                                       child: Text(
-                                          "S48: ${snapshot.data![index].size48}")),
+                                          "[S48: ${snapshot.data![index].size48R}]")),
                                   Expanded(
                                       child: Text(
-                                          "S52: ${snapshot.data![index].size52}")),
+                                          "[S52: ${snapshot.data![index].size52R}]")),
                                   Expanded(
                                       child: Text(
-                                          "S56: ${snapshot.data![index].size56}")),
+                                          "[S56: ${snapshot.data![index].size56R}]")),
                                 ],
                               ),
                             ]),
@@ -190,8 +190,8 @@ class _HomeStockState extends State<HomeStock> {
               label: 'Add',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.delete),
-              label: 'Delete',
+              icon: Icon(Icons.settings),
+              label: 'Settings',
             ),
           ],
         ),
