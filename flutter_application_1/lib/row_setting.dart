@@ -8,6 +8,7 @@ import 'package:njoroder_application/controller/form_controller.dart';
 import 'package:njoroder_application/controller/formpost_controller.dart';
 import 'package:njoroder_application/homestock.dart';
 import 'package:njoroder_application/main.dart';
+import 'package:njoroder_application/sizestock.dart';
 import 'model/delrow_model.dart';
 import 'dart:async';
 import 'controller/delrow_controller.dart';
@@ -128,17 +129,20 @@ class _RowSettingState extends State<RowSetting> {
   Widget build(BuildContext context) {
     val1.text = "4";
     val2.text = "";
-    int _selectedIndex = 0; //New
+    int selectedIndex = 0; //New
     void _onItemTapped(int index) {
       setState(() {
-        _selectedIndex = index;
-        if (_selectedIndex == 0) {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomeStock()));
-        } else if (_selectedIndex == 1) {
+        selectedIndex = index;
+        if (selectedIndex == 0) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => MyApp()));
-        } else if (_selectedIndex == 2) {
+        } else if (selectedIndex == 1) {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => sizestock()));
+        } else if (selectedIndex == 2) {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomeStock()));
+        } else if (selectedIndex == 3) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => RowSetting()));
         }
@@ -311,16 +315,20 @@ class _RowSettingState extends State<RowSetting> {
                         57)))), // sets the inactive color of the `BottomNavigationBar`
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
+          currentIndex: selectedIndex,
           onTap: _onItemTapped,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.add),
               label: 'Add',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              label: 'Stock Size',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              label: 'Stock Model',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),

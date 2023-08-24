@@ -14,9 +14,8 @@ class DelRowController {
   //V203 : AKfycbzb5HmcJJPxqi2_ivR_PKSV8NShIUCp4OD4QqIxkPnYD-DpG34wsdgnUo-eHNB_etRtdg : Pilot >> V2005.2
   //V205.3 AKfycbx7zbMkU1XEI98mV4nNFKeWbXOUfWTlM2SZhXutfQRJhuHI2-GlvSPTaq_TGrtI394o : Fix error 1 row
   //APP V2 : AKfycbyd4vfECx0env4RkNqgdGSve1dyCEp466GICN76l1e4bqK1awTC4zgB5y4dQ_SlfQSwYA
-  //APP DEV: AKfycbwHATyFfl1LbJC54pUojWUw7aTCR98dvW2lBIyB4MgbDh-5s5CfkURjaExKOEfS8koCCw
   static const String URLApiByOne =
-      "https://script.google.com/macros/s/AKfycbwHATyFfl1LbJC54pUojWUw7aTCR98dvW2lBIyB4MgbDh-5s5CfkURjaExKOEfS8koCCw/exec"; // เปลี่ยนทุกครั้งที่มีการ Deploy
+      "https://script.google.com/macros/s/AKfycbzc225VqnVLOiD4ZqMep8ijYRtbp-FB8ypJO3ihjInJJ4-a9G6Nanl9PWTTKmOEw2fOoQ/exec"; // เปลี่ยนทุกครั้งที่มีการ Deploy
   // Success Status Message
   static const STATUS_SUCCESS = "SUCCESS";
 

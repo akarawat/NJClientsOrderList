@@ -7,7 +7,6 @@ import 'package:njoroder_application/main.dart';
 import 'package:njoroder_application/model/stock_model.dart';
 import 'package:njoroder_application/row_setting.dart';
 import 'package:njoroder_application/controller/stock_controller.dart';
-import 'package:njoroder_application/sizestock.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -62,14 +61,11 @@ class _HomeStockState extends State<HomeStock> {
         selectedIndex = index;
         if (selectedIndex == 0) {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => MyApp()));
+              .push(MaterialPageRoute(builder: (context) => HomeStock()));
         } else if (selectedIndex == 1) {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => sizestock()));
+              .push(MaterialPageRoute(builder: (context) => MyApp()));
         } else if (selectedIndex == 2) {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomeStock()));
-        } else if (selectedIndex == 3) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => RowSetting()));
         }
@@ -211,16 +207,12 @@ class _HomeStockState extends State<HomeStock> {
           onTap: _onItemTapped,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.add),
               label: 'Add',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              label: 'Stock Size',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              label: 'Stock Model',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),

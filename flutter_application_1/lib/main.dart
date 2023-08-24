@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 // import 'package:ecbox_ggsheet_toto/report_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:njoroder_application/model/formpost_model.dart';
+import 'package:njoroder_application/sizestock.dart';
 //import 'package:intl/intl_browser.dart';
 import 'dart:async';
 import 'controller/formpost_controller.dart';
@@ -300,17 +301,20 @@ class _MyAppState extends State<MyApp> {
           .format(DateTime.now().add(const Duration(days: 1)))
           .toString();
 
-    int _selectedIndex = 0; //New
+    int selectedIndex = 0; //New
     void _onItemTapped(int index) {
       setState(() {
-        _selectedIndex = index;
-        if (_selectedIndex == 0) {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomeStock()));
-        } else if (_selectedIndex == 1) {
+        selectedIndex = index;
+        if (selectedIndex == 0) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => MyApp()));
-        } else if (_selectedIndex == 2) {
+        } else if (selectedIndex == 1) {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => sizestock()));
+        } else if (selectedIndex == 2) {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomeStock()));
+        } else if (selectedIndex == 3) {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => RowSetting()));
         }
@@ -866,17 +870,21 @@ class _MyAppState extends State<MyApp> {
                         57)))), // sets the inactive color of the `BottomNavigationBar`
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
+          currentIndex: selectedIndex,
           onTap: _onItemTapped,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+              icon: Icon(Icons.add),
+              label: 'Add',
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add),
-                label: 'Add',
-                backgroundColor: Color.fromRGBO(100, 0, 255, 0.5)),
+              icon: Icon(Icons.list),
+              label: 'Stock Size',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              label: 'Stock Model',
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: 'Settings',

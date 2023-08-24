@@ -3,24 +3,26 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:njoroder_application/controller/stocksize_controller.dart';
+import 'package:njoroder_application/homestock.dart';
 import 'package:njoroder_application/main.dart';
 import 'package:njoroder_application/model/stock_model.dart';
+import 'package:njoroder_application/model/stock_size.dart';
 import 'package:njoroder_application/row_setting.dart';
 import 'package:njoroder_application/controller/stock_controller.dart';
-import 'package:njoroder_application/sizestock.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: HomeStock(),
+    home: sizestock(),
   ));
 }
 
-class HomeStock extends StatefulWidget {
+class sizestock extends StatefulWidget {
   @override
-  State<HomeStock> createState() => _HomeStockState();
+  State<sizestock> createState() => _sizestockState();
 }
 
-class _HomeStockState extends State<HomeStock> {
+class _sizestockState extends State<sizestock> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -93,8 +95,8 @@ class _HomeStockState extends State<HomeStock> {
           ),
         ),
       ),
-      body: FutureBuilder<List<Data>>(
-        future: fetchData(),
+      body: FutureBuilder<List<DataSizeShr>>(
+        future: fetchDataStocksize(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -115,53 +117,31 @@ class _HomeStockState extends State<HomeStock> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Expanded(
-                                  child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: <Widget>[
-                                  Row(
-                                    children: [
-                                      Text(
-                                          "    ${snapshot.data![index].mName}"),
-                                    ],
-                                  )
-                                ],
-                              )),
-                              Expanded(
                                 child: LayoutBuilder(
                                     builder: (context, constraints) {
-                                  if (snapshot.data![index].mName
-                                      .contains('กางเกงเล็ก')) {
-                                    return Text(
-                                        "#เล็ก Stock: ${snapshot.data![index].sizeM}, ");
-                                  } else if (snapshot.data![index].mName
-                                      .contains('กางเกงปกติ')) {
-                                    return Text(
-                                        "#ปกติ Stock: ${snapshot.data![index].sizeL}, ");
-                                  } else if (snapshot.data![index].mName
-                                      .contains('กางเกงพิเศษ')) {
-                                    return Text(
-                                        "#พิเศษ Stock: ${snapshot.data![index].sizeXL}, ");
-                                  } else {
-                                    return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                              " S 36:    ${snapshot.data![index].size36R}   "),
-                                          Text(
-                                              " S 40:    ${snapshot.data![index].size40R} "),
-                                          Text(
-                                              " S 42:    ${snapshot.data![index].size42R} "),
-                                          Text(
-                                              " S 44:    ${snapshot.data![index].size44R} "),
-                                          Text(
-                                              " S 48:    ${snapshot.data![index].size48R} "),
-                                          Text(
-                                              " S 52:    ${snapshot.data![index].size52R} "),
-                                          Text(
-                                              " S 56:    ${snapshot.data![index].size56R} "),
-                                        ]);
-                                  }
+                                  return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                            "[SIZE: ${snapshot.data![index].sizeName} ]"),
+                                        Text(
+                                            "${snapshot.data![index].sizeN1}   "),
+                                        Text(
+                                            "${snapshot.data![index].sizeN2} "),
+                                        Text(
+                                            "${snapshot.data![index].sizeN3} "),
+                                        Text(
+                                            "${snapshot.data![index].sizeN4} "),
+                                        Text(
+                                            "${snapshot.data![index].sizeN5} "),
+                                        Text(
+                                            "${snapshot.data![index].sizeN6} "),
+                                        Text(
+                                            "${snapshot.data![index].sizeN7} "),
+                                        Text(
+                                            "${snapshot.data![index].sizeN8} "),
+                                      ]);
                                 }),
                               ),
                             ],
@@ -177,6 +157,7 @@ class _HomeStockState extends State<HomeStock> {
           return const CircularProgressIndicator();
         },
       ),
+
       // bottomNavigationBar: BottomNavigationBar(
       //   items: const <BottomNavigationBarItem>[
       //     BottomNavigationBarItem(
