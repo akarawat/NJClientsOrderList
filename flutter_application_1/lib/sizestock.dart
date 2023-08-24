@@ -154,6 +154,11 @@ class _sizestockState extends State<sizestock> {
                     });
               } else if (snapshot.hasError) {
                 return Text(snapshot.error.toString());
+              } else {
+                const CircularProgressIndicator(
+                  value: 10,
+                  semanticsLabel: 'Loadings...',
+                );
               }
               // By default show a loading spinner.
               return const CircularProgressIndicator();
@@ -208,6 +213,11 @@ class _sizestockState extends State<sizestock> {
                     });
               } else if (snapshot.hasError) {
                 return Text(snapshot.error.toString());
+              } else {
+                const CircularProgressIndicator(
+                  value: 10,
+                  semanticsLabel: 'Loadings...',
+                );
               }
               // By default show a loading spinner.
               return const CircularProgressIndicator();

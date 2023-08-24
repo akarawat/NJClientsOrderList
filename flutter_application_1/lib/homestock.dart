@@ -172,6 +172,11 @@ class _HomeStockState extends State<HomeStock> {
                 });
           } else if (snapshot.hasError) {
             return Text(snapshot.error.toString());
+          } else {
+            const CircularProgressIndicator(
+              value: 10,
+              semanticsLabel: 'Loadings...',
+            );
           }
           // By default show a loading spinner.
           return const CircularProgressIndicator();
