@@ -233,8 +233,8 @@ class _MyAppState extends State<MyApp> {
     '48',
     '52',
     '56',
+    'S',
     'M',
-    'L',
     'XL',
   ];
   String selectvalSize = "";
@@ -596,8 +596,8 @@ class _MyAppState extends State<MyApp> {
                                         onPressed: () {
                                           bool flag = false;
                                           if (selectval == "กางเกง" &&
-                                              (selectvalSize == "M" ||
-                                                  selectvalSize == "L" ||
+                                              (selectvalSize == "S" ||
+                                                  selectvalSize == "M" ||
                                                   selectvalSize == "XL")) {
                                             flag = true;
                                             // showMsgDialog(context,

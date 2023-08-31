@@ -7,7 +7,7 @@ Future<List<Data>> fetchData() async {
   // var url = Uri.parse(
   //     'https://script.google.com/macros/s/AKfycbxfCGjLeENRqPRGiH6UOhxEcEZclanPc0VZG2y_X1f8Re1zgO92OabM8Z4qSkYCSV5bvg/exec?func=stock');
   var url = Uri.parse(
-      'https://script.google.com/macros/s/AKfycbzc225VqnVLOiD4ZqMep8ijYRtbp-FB8ypJO3ihjInJJ4-a9G6Nanl9PWTTKmOEw2fOoQ/exec?func=stock');
+      'https://script.google.com/macros/s/AKfycbxBp8PbJ5_r_vMHB9pkoVI5TX4LAxxCRoqpanm0gwzTFOrSt0LKpX3tVZIQgTB2NwSC7Q/exec?func=stock');
 
   final response = await http.get(url);
   if (response.statusCode == 200) {

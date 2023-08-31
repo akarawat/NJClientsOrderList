@@ -132,15 +132,15 @@ class _HomeStockState extends State<HomeStock> {
                                   if (snapshot.data![index].mName
                                       .contains('กางเกงเล็ก')) {
                                     return Text(
-                                        "#เล็ก Stock: ${snapshot.data![index].sizeM}, ");
+                                        "#เล็ก Stock: ${snapshot.data![index].sizeMR}, ");
                                   } else if (snapshot.data![index].mName
                                       .contains('กางเกงปกติ')) {
                                     return Text(
-                                        "#ปกติ Stock: ${snapshot.data![index].sizeL}, ");
+                                        "#ปกติ Stock: ${snapshot.data![index].sizeLR}, ");
                                   } else if (snapshot.data![index].mName
                                       .contains('กางเกงพิเศษ')) {
                                     return Text(
-                                        "#พิเศษ Stock: ${snapshot.data![index].sizeXL}, ");
+                                        "#พิเศษ Stock: ${snapshot.data![index].sizeXLR}, ");
                                   } else {
                                     return Column(
                                         crossAxisAlignment:
