@@ -323,7 +323,7 @@ class _MyAppState extends State<MyApp> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("NJ Orders Application"),
+        title: Text("NJ Orders Application V206"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

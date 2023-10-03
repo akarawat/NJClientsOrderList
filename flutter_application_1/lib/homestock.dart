@@ -78,7 +78,7 @@ class _HomeStockState extends State<HomeStock> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("NJ Orders Application"),
+        title: const Text("NJ Orders Application V206"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -172,12 +172,13 @@ class _HomeStockState extends State<HomeStock> {
                 });
           } else if (snapshot.hasError) {
             return Text(snapshot.error.toString());
-          } else {
-            const CircularProgressIndicator(
-              value: 10,
-              semanticsLabel: 'Loadings...',
-            );
           }
+          // else {
+          //   const CircularProgressIndicator(
+          //     value: 10,
+          //     semanticsLabel: 'Loadings...',
+          //   );
+          // }
           // By default show a loading spinner.
           return const CircularProgressIndicator();
         },
