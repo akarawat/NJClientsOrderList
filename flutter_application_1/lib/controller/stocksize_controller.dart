@@ -4,7 +4,7 @@ import 'package:njoroder_application/model/stock_size.dart';
 
 Future<List<DataSizeShr>> fetchDataStocksize() async {
   var url = Uri.parse(
-      'https://script.google.com/macros/s/AKfycbxBp8PbJ5_r_vMHB9pkoVI5TX4LAxxCRoqpanm0gwzTFOrSt0LKpX3tVZIQgTB2NwSC7Q/exec?func=stoshr');
+      'https://script.google.com/macros/s/AKfycbwNMRuW0TTIhHvucvUpRYy9JndjkPKrLkkpblTtEpNygwdwGvjbOjArhGhIhvY6Kl9z9w/exec?func=stoshr');
 
   final response = await http.get(url);
   if (response.statusCode == 200) {
@@ -17,7 +17,7 @@ Future<List<DataSizeShr>> fetchDataStocksize() async {
 
 Future<List<DataSizeTro>> fetchDataStockTrosize() async {
   var url = Uri.parse(
-      'https://script.google.com/macros/s/AKfycbxBp8PbJ5_r_vMHB9pkoVI5TX4LAxxCRoqpanm0gwzTFOrSt0LKpX3tVZIQgTB2NwSC7Q/exec?func=stotro');
+      'https://script.google.com/macros/s/AKfycbwNMRuW0TTIhHvucvUpRYy9JndjkPKrLkkpblTtEpNygwdwGvjbOjArhGhIhvY6Kl9z9w/exec?func=stotro');
 
   final response = await http.get(url);
   if (response.statusCode == 200) {

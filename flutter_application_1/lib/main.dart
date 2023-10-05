@@ -211,16 +211,28 @@ class _MyAppState extends State<MyApp> {
   // }
 
   List<String> arrModels = [];
-  List<String> listitems = [
+  List<String> listitemsSelect = [];
+  List<String> listitemsWhite = [
     '',
     'คอจีนกระดุมหน้า',
     'คอวีเรียบ',
     'คอปาดเรียบ',
     'คอกลมผูกโบว์',
-    'คอจีนผ่าหน้า',
+    'คอบัวจีน',
     'คอจีนกระเป๋า',
     'คอปก',
     'คอจีนแขน4ส่วน',
+    'กางเกง',
+  ];
+  List<String> listitemsColor = [
+    '',
+    'คอจีนสีน้ำตาล',
+    'คอจีนสีกรม',
+    'คอจีนสีดำ',
+    'คอจีนสีเปลือกไม้',
+    'คอจีนสีเขียว',
+    'คอจีนสีชมพู',
+    'คอจีนสีม่วง',
     'กางเกง',
   ];
   String selectval = "";
@@ -323,7 +335,7 @@ class _MyAppState extends State<MyApp> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("NJ Orders Application V206"),
+        title: Text("NJ Orders Application V300"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -539,6 +551,53 @@ class _MyAppState extends State<MyApp> {
                               height: 25,
                             ),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            listitemsSelect = listitemsWhite;
+                                          });
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color(0xFF0759CD)),
+                                        ),
+                                        child: Text('ชุด ขาว'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            listitemsSelect = listitemsColor;
+                                          });
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color.fromARGB(
+                                                      255, 186, 162, 4)),
+                                        ),
+                                        child: Text('ชุด  สี'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 25,
+                            ),
+                            Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Expanded(
@@ -551,7 +610,7 @@ class _MyAppState extends State<MyApp> {
                                         selectval = value.toString();
                                       });
                                     },
-                                    items: listitems.map((itemone) {
+                                    items: listitemsSelect.map((itemone) {
                                       return DropdownMenuItem(
                                           value: itemone, child: Text(itemone));
                                     }).toList(),
@@ -629,6 +688,8 @@ class _MyAppState extends State<MyApp> {
                                             setState(() {
                                               arrModels.add(
                                                   "$selectval|$selectvalSize|${valTotal.text}");
+                                              selectval = "";
+                                              selectvalSize = "";
                                             });
                                           }
                                           /*

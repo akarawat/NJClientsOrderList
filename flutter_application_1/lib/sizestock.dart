@@ -80,7 +80,7 @@ class _sizestockState extends State<sizestock> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("NJ Orders Application V206"),
+        title: const Text("NJ Orders Application V300"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

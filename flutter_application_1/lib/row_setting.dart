@@ -151,7 +151,7 @@ class _RowSettingState extends State<RowSetting> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("NJ Orders Application V206"),
+        title: Text("NJ Orders Application V300"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
